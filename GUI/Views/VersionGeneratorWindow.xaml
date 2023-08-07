@@ -8,7 +8,8 @@
 	xmlns:local="clr-namespace:DivinityModManager.Views"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
-	Title="Version Generator"
+	xmlns:loc="clr-namespace:DivinityModManager.Properties"
+	Title="{x:Static loc:Resources.VersionGenerator}"
 	Width="600"
 	Height="300"
 	Background="{DynamicResource {x:Static adonisUI:Brushes.Layer0BackgroundBrush}}"
@@ -89,7 +90,7 @@
 				HorizontalAlignment="Center"
 				VerticalAlignment="Center"
 				Orientation="Horizontal">
-				<TextBlock Text="Version Number: " />
+				<TextBlock Text="{x:Static loc:Resources.VersionNumber}" />
 				<controls:UnfocusableTextBox x:Name="VersionNumberTextBox" />
 			</StackPanel>
 			<StackPanel
@@ -103,8 +104,8 @@
 						<Setter Property="Margin" Value="4,0" />
 					</Style>
 				</StackPanel.Resources>
-				<Button x:Name="CopyButton" Content="Copy" />
-				<Button x:Name="ResetButton" Content="Reset" />
+				<Button x:Name="CopyButton" Content="{x:Static loc:Resources.Copy}" />
+				<Button x:Name="ResetButton" Content="{x:Static loc:Resources.Reset}" />
 			</StackPanel>
 		</Grid>
 		<StatusBar Grid.Row="1" MinHeight="16">

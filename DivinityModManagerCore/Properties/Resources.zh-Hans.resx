@@ -1,0 +1,705 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Open Extender Logs Folder" xml:space="preserve">
+    <value>打开扩展器日志文件夹</value>
+  </data>
+  <data name="Extract Active Adventure Mod To..." xml:space="preserve">
+    <value>提取Active Adventure Mod 到...</value>
+  </data>
+  <data name="Toggle Light/Dark Mode" xml:space="preserve">
+    <value>切换亮/暗模式</value>
+  </data>
+  <data name="Open Game Folder" xml:space="preserve">
+    <value>打开游戏文件夹</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Focus Inactive Mods List" xml:space="preserve">
+    <value>聚焦 非活动Mod列表</value>
+  </data>
+  <data name="Export Order to Text File..." xml:space="preserve">
+    <value>将订单导出到文本文件...</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="Save Order As..." xml:space="preserve">
+    <value>将订单保存为...</value>
+  </data>
+  <data name="Toggle Focus Filter for Current List" xml:space="preserve">
+    <value>切换当前列表的焦点过滤器</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="Export Order to Game" xml:space="preserve">
+    <value>将订单导出到游戏</value>
+  </data>
+  <data name="Open Repository Page..." xml:space="preserve">
+    <value>打开资源库页面...</value>
+  </data>
+  <data name="Export Order to Archive As..." xml:space="preserve">
+    <value>将订单导出为归档文件...</value>
+  </data>
+  <data name="Extract Selected Mods To..." xml:space="preserve">
+    <value>提取选中的Mod到...</value>
+  </data>
+  <data name="Import Mod..." xml:space="preserve">
+    <value>导入Mod...</value>
+  </data>
+  <data name="Open Mods Folder" xml:space="preserve">
+    <value>打开 Mods 文件夹</value>
+  </data>
+  <data name="Import Order from File..." xml:space="preserve">
+    <value>从文件导入订单...</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>工具</value>
+  </data>
+  <data name="Load Order From Selected GM Campaign" xml:space="preserve">
+    <value>从选定的 GM 活动加载订单</value>
+  </data>
+  <data name="Move to Bottom of Active List" xml:space="preserve">
+    <value>移至活动列表底部</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Add New Order" xml:space="preserve">
+    <value>添加新订单</value>
+  </data>
+  <data name="Export Order to Archive (.zip)" xml:space="preserve">
+    <value>将订单导出到存档 (.zip)</value>
+  </data>
+  <data name="Open Keyboard Shortcuts" xml:space="preserve">
+    <value>打开键盘快捷键</value>
+  </data>
+  <data name="Open Workshop Folder" xml:space="preserve">
+    <value>打开Workshop文件夹</value>
+  </data>
+  <data name="Refresh Workshop Updates" xml:space="preserve">
+    <value>刷新Workshop更新</value>
+  </data>
+  <data name="Import Order from Archive..." xml:space="preserve">
+    <value>从存档导入订单...</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>查看</value>
+  </data>
+  <data name="Toggle Version Generator Window" xml:space="preserve">
+    <value>切换版本生成器窗口</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="Moved Selected Mods to Opposite List" xml:space="preserve">
+    <value>将选定Mod移至对立列表</value>
+  </data>
+  <data name="Save Order" xml:space="preserve">
+    <value>保存订单</value>
+  </data>
+  <data name="Import Order from Save..." xml:space="preserve">
+    <value>从保存的订单导入...</value>
+  </data>
+  <data name="Focus Active Mods List" xml:space="preserve">
+    <value>聚焦活动Mod列表</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>管理</value>
+  </data>
+  <data name="Go to Other List" xml:space="preserve">
+    <value>转到其他列表</value>
+  </data>
+  <data name="Launch Game" xml:space="preserve">
+    <value>启动游戏</value>
+  </data>
+  <data name="Donate a Coffee..." xml:space="preserve">
+    <value>捐赠一杯咖啡...</value>
+  </data>
+  <data name="Speak Active Order" xml:space="preserve">
+    <value>主动发言顺序</value>
+  </data>
+  <data name="Show File Names for Mods" xml:space="preserve">
+    <value>显示Mod的文件名</value>
+  </data>
+  <data name="Reload All" xml:space="preserve">
+    <value>全部重新加载</value>
+  </data>
+  <data name="Open Preferences" xml:space="preserve">
+    <value>打开首选项</value>
+  </data>
+  <data name="Download &amp; Install the Script Extender..." xml:space="preserve">
+    <value>下载并安装脚本扩展器...</value>
+  </data>
+  <data name="Check for Updates" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="Import Order from Save As New Order..." xml:space="preserve">
+    <value>从 &quot;另存为新订单 &quot;导入订单...</value>
+  </data>
+  <data name="Delete Selected Mods..." xml:space="preserve">
+    <value>删除所选Mod...</value>
+  </data>
+  <data name="Toggle Updates View" xml:space="preserve">
+    <value>切换更新视图</value>
+  </data>
+  <data name="Move to Top of Active List" xml:space="preserve">
+    <value>移至活动列表顶部</value>
+  </data>
+  <data name="ActionOnGameLaunchTooltip" xml:space="preserve">
+    <value>通过Mod管理器启动游戏时，将执行以下操作</value>
+  </data>
+  <data name="ActiveMods" xml:space="preserve">
+    <value>活动Mod</value>
+  </data>
+  <data name="ActiveMods1" xml:space="preserve">
+    <value>活动Mod</value>
+  </data>
+  <data name="ActiveModsTooltip" xml:space="preserve">
+    <value>筛选活动Mod</value>
+  </data>
+  <data name="AddNewOrderButtonTooltip" xml:space="preserve">
+    <value>添加新负载订单</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>作者</value>
+  </data>
+  <data name="Campaign" xml:space="preserve">
+    <value>活动</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Changelog" xml:space="preserve">
+    <value>更新日志</value>
+  </data>
+  <data name="ClearCacheText" xml:space="preserve">
+    <value>清除Workshop缓存</value>
+  </data>
+  <data name="ClearCacheTextTooltip" xml:space="preserve">
+    <value>删除用于标签显示的本地Workshop缓存，位于 Data\workshopdata.json</value>
+  </data>
+  <data name="ClearHotkeyMenuItemHeader" xml:space="preserve">
+    <value>移除按键绑定</value>
+  </data>
+  <data name="ClearWorkshopCache" xml:space="preserve">
+    <value>删除缓存</value>
+  </data>
+  <data name="Command" xml:space="preserve">
+    <value>指挥</value>
+  </data>
+  <data name="Copy" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="CopyModPathToClipboardHeader" xml:space="preserve">
+    <value>将Mod路径复制到剪贴板</value>
+  </data>
+  <data name="CopyOrderToClipboardHeader" xml:space="preserve">
+    <value>将订单复制到剪贴板</value>
+  </data>
+  <data name="CopyPathToClipboardHeader" xml:space="preserve">
+    <value>将路径复制到剪贴板</value>
+  </data>
+  <data name="CopySelectedModsButton" xml:space="preserve">
+    <value>将所选内容复制到Mods文件夹</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="DeletionOptionCheckboxTooltip" xml:space="preserve">
+    <value>永久删除文件，而不是将其移动到回收站。</value>
+  </data>
+  <data name="DonateACoffee" xml:space="preserve">
+    <value>捐赠一杯咖啡</value>
+  </data>
+  <data name="Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="DownloadUpdate" xml:space="preserve">
+    <value>下载更新</value>
+  </data>
+  <data name="EnableDirectX11Mode" xml:space="preserve">
+    <value>启用 DirectX 11 模式</value>
+  </data>
+  <data name="EnableDirectX11ModeTooltip" xml:space="preserve">
+    <value>如果启用，启动游戏时将使用 bg3_dx11.exe 代替。</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="ExportOrderAsListHeader" xml:space="preserve">
+    <value>将订单导出为列表...</value>
+  </data>
+  <data name="ExportOrderToArchiveAsTooltip" xml:space="preserve">
+    <value>将活动Mod导出为 Zip 文件...</value>
+  </data>
+  <data name="ExportOrderToArchiveTooltip" xml:space="preserve">
+    <value>将活动Mod导出为压缩包</value>
+  </data>
+  <data name="ExportToModSettingsButtonTooltip" xml:space="preserve">
+    <value>将订单导出到游戏</value>
+  </data>
+  <data name="FilesToDelete" xml:space="preserve">
+    <value>要删除的文件</value>
+  </data>
+  <data name="GameLaunchActionComboBoxTooltip" xml:space="preserve">
+    <value>通过Mod管理器启动游戏时，将执行以下操作</value>
+  </data>
+  <data name="GameLaunchParams" xml:space="preserve">
+    <value>游戏启动参数</value>
+  </data>
+  <data name="GameLaunchParamsClearHeader" xml:space="preserve">
+    <value>清晰</value>
+  </data>
+  <data name="GameLaunchParamsClearTooltip" xml:space="preserve">
+    <value>清除当前参数</value>
+  </data>
+  <data name="GameLaunchParamsLogPath" xml:space="preserve">
+    <value>将故事日志写入的目录</value>
+  </data>
+  <data name="GameLaunchParamsStoryLog" xml:space="preserve">
+    <value>启用故事日志</value>
+  </data>
+  <data name="GameLaunchParamsTooltip" xml:space="preserve">
+    <value>通过Mod管理器启动游戏时传递给游戏可执行文件的参数</value>
+  </data>
+  <data name="GameLaunchParamsUnknown" xml:space="preserve">
+    <value>目的不明。</value>
+  </data>
+  <data name="HomePage" xml:space="preserve">
+    <value>主页：</value>
+  </data>
+  <data name="InactiveMods" xml:space="preserve">
+    <value>非活动Mod</value>
+  </data>
+  <data name="InactiveModsTooltip" xml:space="preserve">
+    <value>筛选非活动Mod</value>
+  </data>
+  <data name="Keybinding" xml:space="preserve">
+    <value>按键绑定</value>
+  </data>
+  <data name="License" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="LogEnabledCheckbox" xml:space="preserve">
+    <value>启用Mod管理器日志</value>
+  </data>
+  <data name="LogEnabledCheckboxTooltip" xml:space="preserve">
+    <value>自动将日志保存到 _Logs</value>
+  </data>
+  <data name="ModOrder" xml:space="preserve">
+    <value>Mod订单</value>
+  </data>
+  <data name="ModUpdates" xml:space="preserve">
+    <value>Mod更新</value>
+  </data>
+  <data name="NewMods" xml:space="preserve">
+    <value>新Mod</value>
+  </data>
+  <data name="OnGameLaunch" xml:space="preserve">
+    <value>游戏启动时</value>
+  </data>
+  <data name="OpenAdventureModInFileExplorerHeader" xml:space="preserve">
+    <value>在文件资源管理器中打开 Adventure Mod...</value>
+  </data>
+  <data name="OpenDonationPageButtonTooltip" xml:space="preserve">
+    <value>向开发者捐赠一杯咖啡 (LaughingLeader)</value>
+  </data>
+  <data name="OpenExportedModOrderFileHeader" xml:space="preserve">
+    <value>打开导出的Mod订单文件...</value>
+  </data>
+  <data name="OpenExtenderLogsFolderButtonTooltip" xml:space="preserve">
+    <value>打开日志文件夹</value>
+  </data>
+  <data name="OpenGameButtonTooltip" xml:space="preserve">
+    <value>启动游戏</value>
+  </data>
+  <data name="OpenGameFolderInFileExplorerHeader" xml:space="preserve">
+    <value>打开游戏文件夹...</value>
+  </data>
+  <data name="OpenModSettingsInFileExplorerHeader" xml:space="preserve">
+    <value>在文件资源管理器中打开...</value>
+  </data>
+  <data name="OpenModsFolderButtonTooltip" xml:space="preserve">
+    <value>打开Mods文件夹</value>
+  </data>
+  <data name="OpenRepoPageButtonTooltip" xml:space="preserve">
+    <value>开放项目页面（Github）</value>
+  </data>
+  <data name="OpenSettingsFolderTooltip" xml:space="preserve">
+    <value>打开设置文件夹</value>
+  </data>
+  <data name="OpenWorkshopFolderButtonTooltip" xml:space="preserve">
+    <value>打开Workshop文件夹</value>
+  </data>
+  <data name="Permanent" xml:space="preserve">
+    <value>永久性</value>
+  </data>
+  <data name="Preferences" xml:space="preserve">
+    <value>首选项</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>简介</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="RefreshButtonTooltip" xml:space="preserve">
+    <value>刷新Mod和Workshop更新</value>
+  </data>
+  <data name="RemoveFromLoadOrderCheckboxContent" xml:space="preserve">
+    <value>从负载顺序中移除</value>
+  </data>
+  <data name="RemoveFromLoadOrderCheckboxTooltip" xml:space="preserve">
+    <value>从活动加载顺序中删除已删除的Mod。</value>
+  </data>
+  <data name="ReportAnIssue" xml:space="preserve">
+    <value>报告问题</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="ResetExtenderSettingsToDefaultTooltip" xml:space="preserve">
+    <value>将扩展器设置重置为默认值</value>
+  </data>
+  <data name="ResetHotkeyMenuItemHeader" xml:space="preserve">
+    <value>重置按键绑定</value>
+  </data>
+  <data name="ResetKeybindings" xml:space="preserve">
+    <value>重置为默认值</value>
+  </data>
+  <data name="ResetKeybindingsTooltip" xml:space="preserve">
+    <value>将所有按键绑定重置为默认值</value>
+  </data>
+  <data name="SaveAsButtonTooltip" xml:space="preserve">
+    <value>将订单保存为...</value>
+  </data>
+  <data name="SaveButtonTooltip" xml:space="preserve">
+    <value>将加载命令保存到文件</value>
+  </data>
+  <data name="SaveSettingsButton" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SaveSettingsTooltip" xml:space="preserve">
+    <value>保存设置（CTRL + S）</value>
+  </data>
+  <data name="Shortcuts" xml:space="preserve">
+    <value>快捷菜单</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>跳过</value>
+  </data>
+  <data name="SkipUpdate" xml:space="preserve">
+    <value>跳过更新</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>支持我们</value>
+  </data>
+  <data name="SupportLinks" xml:space="preserve">
+    <value>支持链接</value>
+  </data>
+  <data name="Updater" xml:space="preserve">
+    <value>更新器</value>
+  </data>
+  <data name="Updates" xml:space="preserve">
+    <value>更新：</value>
+  </data>
+  <data name="UpdateViewToggleButtonTooltip" xml:space="preserve">
+    <value>切换Mod更新视图</value>
+  </data>
+  <data name="VersionGenerator" xml:space="preserve">
+    <value>版本生成器</value>
+  </data>
+  <data name="VersionNumber" xml:space="preserve">
+    <value>版本号：</value>
+  </data>
+  <data name="Game Data Path" xml:space="preserve">
+    <value>游戏数据路径</value>
+  </data>
+  <data name="The path to the Data folder, for loading editor mods." xml:space="preserve">
+    <value>数据文件夹的路径，用于加载编辑器Mod。</value>
+  </data>
+  <data name="Example: Baldur&apos;s Gate 3/Data" xml:space="preserve">
+    <value>举例说明：博德之门 3/数据</value>
+  </data>
+  <data name="Game Executable Path" xml:space="preserve">
+    <value>游戏执行路径</value>
+  </data>
+  <data name="The path to bg3.exe" xml:space="preserve">
+    <value>bg3.exe 的路径</value>
+  </data>
+  <data name="Saved Load Orders Path" xml:space="preserve">
+    <value>保存的加载订单路径</value>
+  </data>
+  <data name="The folder containing mod load orders" xml:space="preserve">
+    <value>包含Mod加载命令的文件夹</value>
+  </data>
+  <data name="Enable Story Log" xml:space="preserve">
+    <value>启用故事日志</value>
+  </data>
+  <data name="When launching the game, enable the Osiris story log (osiris.log)" xml:space="preserve">
+    <value>启动游戏时，启用奥西里斯故事日志 (osiris.log)</value>
+  </data>
+  <data name="Always Disable Telemetry" xml:space="preserve">
+    <value>始终禁用遥测</value>
+  </data>
+  <data name="If enabled, Larian&apos;s telemetry (data gathering for early access) for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active" xml:space="preserve">
+    <value>如果启用，Larian对BG3的遥测（早期访问的数据收集）将始终被禁用，而与活动的Mod无关。如果Mod处于活动状态，遥测始终被禁用</value>
+  </data>
+  <data name="Auto Add Missing Dependencies When Exporting" xml:space="preserve">
+    <value>导出时自动添加缺失的依赖项</value>
+  </data>
+  <data name="Automatically add dependency mods above their dependents in the exported load order, if omitted from the active order" xml:space="preserve">
+    <value>在导出的加载顺序中，如果从活动顺序中省略，则自动将依赖Mod添加到其依赖的Mod上方</value>
+  </data>
+  <data name="Enable Automatic Updates" xml:space="preserve">
+    <value>启用自动更新</value>
+  </data>
+  <data name="Automatically check for updates when the program starts" xml:space="preserve">
+    <value>程序启动时自动检查更新</value>
+  </data>
+  <data name="Disable Missing Mod Warnings" xml:space="preserve">
+    <value>禁用缺失Mod警告</value>
+  </data>
+  <data name="If a load order is missing mods, no warnings will be displayed" xml:space="preserve">
+    <value>如果加载命令中缺少Mod，则不会显示警告信息</value>
+  </data>
+  <data name="Shift Focus on Swap" xml:space="preserve">
+    <value>将重点转向交换</value>
+  </data>
+  <data name="When moving selected mods to the opposite list with Enter, move focus to that list as well" xml:space="preserve">
+    <value>用回车键将选定的Mod移动到相反列表时，也会将焦点移动到该列表</value>
+  </data>
+  <data name="Enable Developer Mode" xml:space="preserve">
+    <value>启用开发者模式</value>
+  </data>
+  <data name="This enables features for mod developers, such as being able to copy a mod&apos;s UUID in context menus, and additional Script Extender options" xml:space="preserve">
+    <value>这为Mod开发者提供了一些功能，例如在上下文菜单中复制Mod的UUID，以及额外的脚本扩展器选项</value>
+  </data>
+  <data name="AdvancedSettingsHeader" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="Adventure" xml:space="preserve">
+    <value>探险</value>
+  </data>
+  <data name="AuthorTip" xml:space="preserve">
+    <value>创建者</value>
+  </data>
+  <data name="ClassicMod" xml:space="preserve">
+    <value>经典</value>
+  </data>
+  <data name="ClearMissingModsButton" xml:space="preserve">
+    <value>删除所有缺失</value>
+  </data>
+  <data name="ClearMissingModsButtonTooltip" xml:space="preserve">
+    <value>从加载顺序中移除所有丢失的Mod。</value>
+  </data>
+  <data name="CopyToClipboardFolderNameHeader" xml:space="preserve">
+    <value>将文件夹名称复制到剪贴板</value>
+  </data>
+  <data name="CopyToClipboardTooltip" xml:space="preserve">
+    <value>复制到剪贴板</value>
+  </data>
+  <data name="CopyToClipboardUUIDHeader" xml:space="preserve">
+    <value>将 UUID 复制到剪贴板</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>当前</value>
+  </data>
+  <data name="CurrentHeader" xml:space="preserve">
+    <value>当前</value>
+  </data>
+  <data name="DefinitiveEditionMod" xml:space="preserve">
+    <value>(终极版）</value>
+  </data>
+  <data name="DeleteModHeader" xml:space="preserve">
+    <value>删除Mod...</value>
+  </data>
+  <data name="DependenciesTip" xml:space="preserve">
+    <value>依赖性：</value>
+  </data>
+  <data name="GMCampaign" xml:space="preserve">
+    <value>通用汽车运动</value>
+  </data>
+  <data name="IndexHelpText" xml:space="preserve">
+    <value>Mod顺序索引列</value>
+  </data>
+  <data name="KeybindingsTabHeader" xml:space="preserve">
+    <value>键盘快捷键</value>
+  </data>
+  <data name="LastUpdatedHeader" xml:space="preserve">
+    <value>最后更新</value>
+  </data>
+  <data name="LastUpdatedOn" xml:space="preserve">
+    <value>最后更新日期</value>
+  </data>
+  <data name="Modes" xml:space="preserve">
+    <value>Modes</value>
+  </data>
+  <data name="ModesHeader" xml:space="preserve">
+    <value>Modes标题</value>
+  </data>
+  <data name="ModifiedDateHeader" xml:space="preserve">
+    <value>修改日期</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>新的</value>
+  </data>
+  <data name="NewHeader" xml:space="preserve">
+    <value>新标题</value>
+  </data>
+  <data name="OpenWorkshopPageHeader" xml:space="preserve">
+    <value>打开 Steam Workshop 页面（浏览器）...</value>
+  </data>
+  <data name="OpenWorkshopPageInSteamHeader" xml:space="preserve">
+    <value>打开 Steam Workshop 页面 (Steam)...</value>
+  </data>
+  <data name="OverrideWarning" xml:space="preserve">
+    <value>这个Mod直接覆盖基本游戏文件。只要这个Mod存在于Mods文件夹中，这些文件就会被覆盖，即使Mod被禁用。</value>
+  </data>
+  <data name="OverrideWarning2" xml:space="preserve">
+    <value>如果您想这样做，可以忽略此警告。</value>
+  </data>
+  <data name="OverwrittenFolders" xml:space="preserve">
+    <value>被覆盖的内置文件夹</value>
+  </data>
+  <data name="ScriptExtender" xml:space="preserve">
+    <value>脚本扩展器</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="ShowFileName" xml:space="preserve">
+    <value>显示文件名</value>
+  </data>
+  <data name="ShowModDisplayName" xml:space="preserve">
+    <value>显示Mod名称</value>
+  </data>
+  <data name="TypeHeader" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+</root>

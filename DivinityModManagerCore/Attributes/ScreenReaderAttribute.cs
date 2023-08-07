@@ -13,8 +13,8 @@ namespace DivinityModManager
 
 		public ScreenReaderHelperAttribute(string name = "", string helpText = "")
 		{
-			Name = name;
-			HelpText = HelpText;
-		}
+			Name = Properties.Resources.ResourceManager.GetString(name) ?? name;
+			HelpText = Properties.Resources.ResourceManager.GetString(helpText) ?? helpText;
+        }
 	}
 }

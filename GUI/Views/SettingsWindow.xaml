@@ -19,7 +19,8 @@
 	xmlns:reactiveui="http://reactiveui.net"
 	xmlns:vm="clr-namespace:DivinityModManager.ViewModels"
 	xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
-	Title="Preferences"
+	xmlns:loc="clr-namespace:DivinityModManager.Properties"
+	Title="{x:Static loc:Resources.Preferences}"
 	Width="800"
 	Height="900"
 	TitleBarBackground="#4e38c9"
@@ -64,7 +65,7 @@
 			<Button
 				Command="{Binding SaveSettingsCommand}"
 				Style="{StaticResource IconButtonStyle}"
-				ToolTip="Save Settings (CTRL + S)">
+				ToolTip="{x:Static loc:Resources.SaveSettingsTooltip}">
 				<controls:AutoGrayableImage Source="{StaticResource SaveImage}" />
 			</Button>
 			<Rectangle
@@ -74,7 +75,7 @@
 			<Button
 				Command="{Binding OpenSettingsFolderCommand}"
 				Style="{StaticResource IconButtonStyle}"
-				ToolTip="Open Settings Folder">
+				ToolTip="{x:Static loc:Resources.OpenSettingsFolderTooltip}">
 				<controls:AutoGrayableImage Source="{StaticResource OpenFolderImage}" />
 			</Button>
 			<Rectangle
@@ -84,7 +85,7 @@
 			<Button
 				Command="{Binding ResetExtenderSettingsToDefaultCommand}"
 				Style="{StaticResource IconButtonStyle}"
-				ToolTip="Reset extender settings to their default values"
+				ToolTip="{x:Static loc:Resources.ResetExtenderSettingsToDefaultTooltip}"
 				Visibility="{Binding ExtenderTabIsVisible, Converter={StaticResource BoolToVisibilityConverter}}">
 				<controls:AutoGrayableImage Source="{StaticResource DefaultIcon}" />
 			</Button>
@@ -93,7 +94,7 @@
 			x:Name="PreferencesTabControl"
 			Grid.Row="1"
 			SelectedIndex="{Binding SelectedTabIndex}">
-			<TabItem FocusManager.FocusedElement="{Binding ElementName=SettingsAutoGrid}" Header="General">
+			<TabItem FocusManager.FocusedElement="{Binding ElementName=SettingsAutoGrid}" Header="{x:Static loc:Resources.SettingsHeader}">
 				<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 					<autogrid:AutoGrid
 						x:Name="SettingsAutoGrid"
@@ -148,14 +149,14 @@
 						<CheckBox VerticalAlignment="Center" IsChecked="{Binding ShiftListFocusOnSwap, UpdateSourceTrigger=PropertyChanged}" />
 						<!--<TextBlock behavior:TextBlockSettingsEntryAttributeBehavior.Target="AutomaticallyLoadDMCampaignMods" />
 						<CheckBox VerticalAlignment="Center" IsChecked="{Binding AutomaticallyLoadDMCampaignMods, UpdateSourceTrigger=PropertyChanged}" />-->
-						<TextBlock Text="On Game Launch" />
+						<TextBlock Text="{x:Static loc:Resources.OnGameLaunch}" />
 						<ComboBox
 							DisplayMemberPath="Description"
 							ItemsSource="{Binding Source={ext:EnumExtension {x:Type dapp:DivinityGameLaunchWindowAction}}}"
 							SelectedValue="{Binding ActionOnGameLaunch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
 							SelectedValuePath="Value"
-							ToolTip="When the game launches through the mod manager, this action will be performed" />
-						<TextBlock Text="Enable DirectX 11 Mode" ToolTip="If enabled, when launching the game, bg3_dx11.exe is used instead." />
+							ToolTip="{x:Static loc:Resources.ActionOnGameLaunchTooltip}" />
+						<TextBlock Text="{x:Static loc:Resources.EnableDirectX11Mode}" ToolTip="{x:Static loc:Resources.EnableDirectX11ModeTooltip}" />
 						<CheckBox VerticalAlignment="Center" IsChecked="{Binding LaunchDX11, UpdateSourceTrigger=PropertyChanged}" />
 					</autogrid:AutoGrid>
 				</ScrollViewer>
@@ -163,7 +164,7 @@
 			<TabItem
 				x:Name="KeybindingsTabItem"
 				FocusManager.FocusedElement="{Binding ElementName=KeybindingsListView}"
-				Header="Keyboard Shortcuts">
+				Header="{x:Static loc:Resources.KeybindingsTabHeader}">
 				<ListView
 					x:Name="KeybindingsListView"
 					KeyboardNavigation.TabNavigation="Continue"
@@ -182,11 +183,11 @@
 										<MenuItem
 											x:Name="ResetHotkeyMenuItem"
 											Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.DataContext.ResetCommand}"
-											Header="Reset Keybinding" />
+											Header="{x:Static loc:Resources.ResetHotkeyMenuItemHeader}" />
 										<MenuItem
 											x:Name="ClearHotkeyMenuItem"
 											Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, Path=PlacementTarget.DataContext.ClearCommand}"
-											Header="Remove Keybinding" />
+											Header="{x:Static loc:Resources.ClearHotkeyMenuItemHeader}" />
 									</ContextMenu>
 								</Setter.Value>
 							</Setter>
@@ -197,7 +198,7 @@
 							<GridView.Columns>
 								<GridViewColumn
 									Width="450"
-									Header="Command"
+									Header="{x:Static loc:Resources.Command}"
 									HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 									<GridViewColumn.CellTemplate>
 										<DataTemplate>
@@ -215,7 +216,7 @@
 								</GridViewColumn>
 								<GridViewColumn
 									Width="200"
-									Header="Keybinding"
+									Header="{x:Static loc:Resources.Keybinding}"
 									HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 									<GridViewColumn.CellTemplate>
 										<DataTemplate>
@@ -233,7 +234,7 @@
 					</ListView.View>
 				</ListView>
 			</TabItem>
-			<TabItem FocusManager.FocusedElement="{Binding ElementName=AdvancedSettingsAutoGrid}" Header="Advanced">
+			<TabItem FocusManager.FocusedElement="{Binding ElementName=AdvancedSettingsAutoGrid}" Header="{x:Static loc:Resources.AdvancedSettingsHeader}">
 				<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 					<autogrid:AutoGrid
 						x:Name="AdvancedSettingsAutoGrid"
@@ -252,7 +253,7 @@
 							VerticalAlignment="Center"
 							IsChecked="{Binding DebugModeEnabled, UpdateSourceTrigger=PropertyChanged}"
 							ToolTip="{Binding ElementName=DebugModeTextBlock, Path=ToolTip}" />
-						<TextBlock Text="Enable Mod Manager Logs" ToolTip="Automatically save logs to _Logs" />
+						<TextBlock Text="{x:Static loc:Resources.LogEnabledCheckbox}" ToolTip="{x:Static loc:Resources.LogEnabledCheckboxTooltip}" />
 						<CheckBox VerticalAlignment="Center" IsChecked="{Binding LogEnabled, UpdateSourceTrigger=PropertyChanged}" />
 						<Menu>
 							<Menu.Resources>
@@ -264,41 +265,41 @@
 							<MenuItem
 								Command="{x:Null}"
 								CommandParameter="{x:Null}"
-								Header="Game Launch Params"
-								ToolTip="Parameters to pass to the game executable when launching the game through the mod manager">
-								<MenuItem Header="-storylog 1" ToolTip="Enables the story log" />
-								<MenuItem Header="--logPath &quot;&quot;" ToolTip="A directory to write story logs to" />
-								<MenuItem Header="-asserts 1" ToolTip="Purpose unknown." />
-								<MenuItem Header="-stats 1" ToolTip="Purpose unknown." />
-								<MenuItem Header="-dynamicStory 1" ToolTip="Purpose unknown." />
-								<MenuItem Header="-externalcrashhandler" ToolTip="Purpose unknown." />
-								<MenuItem Header="-nametag &quot;&quot;" ToolTip="Purpose unknown." />
-								<MenuItem Header="--cpuLimit &quot;&quot;" ToolTip="Purpose unknown." />
-								<MenuItem Header="-module &quot;&quot;" ToolTip="Purpose unknown." />
-								<MenuItem Header="+connect_lobby &quot;&quot;" ToolTip="Purpose unknown." />
-								<MenuItem Header="-locaupdater 1" ToolTip="Purpose unknown." />
-								<MenuItem Header="-mediaPath &quot;&quot;" ToolTip="Purpose unknown." />
+								Header="{x:Static loc:Resources.GameLaunchParams}"
+								ToolTip="{x:Static loc:Resources.GameLaunchParamsTooltip}">
+								<MenuItem Header="-storylog 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsStoryLog}" />
+								<MenuItem Header="--logPath &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsLogPath}" />
+								<MenuItem Header="-asserts 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-stats 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-dynamicStory 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-externalcrashhandler" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-nametag &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="--cpuLimit &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-module &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="+connect_lobby &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-locaupdater 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="-mediaPath &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
 								<MenuItem
 									Command="{Binding ClearLaunchParamsCommand}"
 									CommandParameter="{x:Null}"
-									Header="Clear"
-									ToolTip="Clear current params" />
+									Header="{x:Static loc:Resources.GameLaunchParamsClearHeader}"
+									ToolTip="{x:Static loc:Resources.GameLaunchParamsClearTooltip}" />
 							</MenuItem>
 						</Menu>
 						<TextBox
 							VerticalAlignment="Center"
 							Text="{Binding GameLaunchParams, UpdateSourceTrigger=PropertyChanged}"
 							TextWrapping="Wrap"
-							ToolTip="Parameters to pass to the game executable when launching the game through the mod manager" />
+							ToolTip="{x:Static loc:Resources.GameLaunchParamsTooltip}" />
 						<TextBlock
 							x:Name="ClearCacheTextBlock"
-							Text="Clear Workshop Cache"
-							ToolTip="Delete the local workshop cache used for tag display, located at Data\workshopdata.json" />
+							Text="{x:Static loc:Resources.ClearCacheText}"
+							ToolTip="{x:Static loc:Resources.ClearCacheTextTooltip}" />
 						<Button
 							HorizontalAlignment="Left"
 							VerticalAlignment="Center"
 							Command="{Binding ClearWorkshopCacheCommand}"
-							Content="Delete Cache"
+							Content="{x:Static loc:Resources.ClearWorkshopCache}"
 							ToolTip="{Binding ElementName=ClearCacheTextBlock, Path=ToolTip}" />
 					</autogrid:AutoGrid>
 				</ScrollViewer>
@@ -314,8 +315,8 @@
 					x:Name="ResetKeybindingsButton"
 					HorizontalAlignment="Center"
 					Command="{Binding ResetKeybindingsCommand}"
-					Content="Reset to Default"
-					ToolTip="Reset all keybindings to their default value"
+					Content="{x:Static loc:Resources.ResetKeybindings}"
+					ToolTip="{x:Static loc:Resources.ResetKeybindingsTooltip}"
 					Visibility="{Binding KeybindingsTabIsVisible, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}" />
 			</Grid>
 			<Grid Grid.Column="1">
@@ -323,7 +324,7 @@
 					x:Name="SaveSettingsButton"
 					Padding="30,0"
 					HorizontalAlignment="Center"
-					Content="Save" />
+					Content="{x:Static loc:Resources.SaveSettingsButton}" />
 			</Grid>
 		</Grid>
 	</Grid>

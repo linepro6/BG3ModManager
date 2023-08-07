@@ -21,6 +21,7 @@
 	xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
 	xmlns:xconv="clr-namespace:Xceed.Wpf.Toolkit.Converters;assembly=Xceed.Wpf.Toolkit"
 	xmlns:xcthemes="clr-namespace:Xceed.Wpf.Toolkit.Themes;assembly=Xceed.Wpf.Toolkit"
+	xmlns:loc="clr-namespace:DivinityModManager.Properties"
 	x:Name="MainResources">
 	<ResourceDictionary.MergedDictionaries>
 		<ResourceDictionary Source="DefaultStyles/ComboBox.xaml" />
@@ -203,17 +204,17 @@
 					<MenuItem
 						Command="{Binding Path=OpenInFileExplorerCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 						CommandParameter="{Binding FilePath}"
-						Header="Open in File Explorer...">
+						Header="{x:Static loc:Resources.OpenModSettingsInFileExplorerHeader}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource OpenFolderImage}" />
 						</MenuItem.Icon>
 					</MenuItem>
-					<MenuItem Command="{Binding OpenWorkshopPageCommand}" Header="Open Steam Workshop Page (Browser)...">
+					<MenuItem Command="{Binding OpenWorkshopPageCommand}" Header="{x:Static loc:Resources.OpenWorkshopPageHeader}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource OpenInBrowserImage}" />
 						</MenuItem.Icon>
 					</MenuItem>
-					<MenuItem Command="{Binding OpenWorkshopPageInSteamCommand}" Header="Open Steam Workshop Page (Steam)...">
+					<MenuItem Command="{Binding OpenWorkshopPageInSteamCommand}" Header="{x:Static loc:Resources.OpenWorkshopPageInSteamHeader}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource OpenSteamWorkshopFolderImage}" />
 						</MenuItem.Icon>
@@ -221,7 +222,7 @@
 					<MenuItem
 						Command="{Binding Path=DeleteModCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 						CommandParameter="{Binding}"
-						Header="Delete Mod..."
+						Header="{x:Static loc:Resources.DeleteModHeader}"
 						IsEnabled="{Binding CanDelete}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource DeleteModImage}" />
@@ -232,10 +233,10 @@
 							<TextBlock>
 								<TextBlock.Style>
 									<Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="TextBlock">
-										<Setter Property="Text" Value="Show File Name" />
+										<Setter Property="Text" Value="{x:Static loc:Resources.ShowFileName}" />
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding DisplayFileForName}" Value="true">
-												<Setter Property="Text" Value="Show Mod Display Name" />
+												<Setter Property="Text" Value="{x:Static loc:Resources.ShowModDisplayName}" />
 											</DataTrigger>
 										</Style.Triggers>
 									</Style>
@@ -249,7 +250,7 @@
 					<MenuItem
 						Command="{Binding Path=CopyToClipboardCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 						CommandParameter="{Binding UUID}"
-						Header="Copy UUID to Clipboard"
+						Header="{x:Static loc:Resources.CopyToClipboardUUIDHeader}"
 						Visibility="{Binding Path=(dapp:DivinityApp.DeveloperModeEnabled), Converter={StaticResource BoolToVisibilityConverter}}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource CopyToClipboardImage}" />
@@ -258,7 +259,7 @@
 					<MenuItem
 						Command="{Binding Path=CopyToClipboardCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 						CommandParameter="{Binding Folder}"
-						Header="Copy FolderName to Clipboard"
+						Header="{x:Static loc:Resources.CopyToClipboardFolderNameHeader}"
 						Visibility="{Binding Path=(dapp:DivinityApp.DeveloperModeEnabled), Converter={StaticResource BoolToVisibilityConverter}}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource CopyToClipboardImage}" />
@@ -318,13 +319,13 @@
 					<MenuItem
 						Command="{Binding Path=OpenInFileExplorerCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 						CommandParameter="{Binding FilePath}"
-						Header="Open in File Explorer..." />
-					<MenuItem Command="{Binding OpenWorkshopPageCommand}" Header="Open Steam Workshop Page (Browser)...">
+						Header="{StaticResource OpenFolderImage}" />
+					<MenuItem Command="{Binding OpenWorkshopPageCommand}" Header="{x:Static loc:Resources.OpenWorkshopPageHeader}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource OpenInBrowserImage}" />
 						</MenuItem.Icon>
 					</MenuItem>
-					<MenuItem Command="{Binding OpenWorkshopPageInSteamCommand}" Header="Open Steam Workshop Page (Steam)...">
+					<MenuItem Command="{Binding OpenWorkshopPageInSteamCommand}" Header="{x:Static loc:Resources.OpenWorkshopPageInSteamHeader}">
 						<MenuItem.Icon>
 							<Image Source="{StaticResource OpenSteamWorkshopFolderImage}" />
 						</MenuItem.Icon>
@@ -334,10 +335,10 @@
 							<TextBlock>
 								<TextBlock.Style>
 									<Style BasedOn="{StaticResource {x:Type TextBlock}}" TargetType="TextBlock">
-										<Setter Property="Text" Value="Show File Name" />
+										<Setter Property="Text" Value="{x:Static loc:Resources.ShowFileName}" />
 										<Style.Triggers>
 											<DataTrigger Binding="{Binding DisplayFileForName}" Value="true">
-												<Setter Property="Text" Value="Show Mod Display Name" />
+												<Setter Property="Text" Value="{x:Static loc:Resources.ShowModDisplayName}" />
 											</DataTrigger>
 										</Style.Triggers>
 									</Style>
@@ -536,19 +537,19 @@
 				<TextBlock
 					Margin="2"
 					Foreground="Red"
-					Text=" (Classic)"
+					Text="{x:Static loc:Resources.ClassicMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
 				<TextBlock
 					Margin="2"
 					Foreground="Lime"
-					Text=" (Definitive Edition)"
+					Text="{x:Static loc:Resources.DefinitiveEditionMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
 				Margin="2"
 				TextWrapping="Wrap"
-				Visibility="{Binding AuthorVisibility}"><Run Text="Created by " /><Run
+				Visibility="{Binding AuthorVisibility}"><Run Text="{x:Static loc:Resources.AuthorTip}" /><Run
 					FontWeight="Bold"
 					Foreground="#3da2fa"
 					Text="{Binding Author}" />
@@ -570,7 +571,7 @@
 				Margin="2"
 				Orientation="Vertical"
 				Visibility="{Binding DependencyVisibility, FallbackValue=Collapsed}">
-				<TextBlock FontWeight="Bold" Text="Dependencies:" />
+				<TextBlock FontWeight="Bold" Text="{x:Static loc:Resources.DependenciesTip}" />
 				<ListBox
 					Margin="2"
 					Padding="0"
@@ -612,10 +613,10 @@
 					Text="{Binding FileName}"
 					Visibility="{Binding IsEditorMod, Converter={StaticResource BoolToVisibilityConverterReversed}, FallbackValue=Collapsed}" />
 				<TextBlock Margin="2" Visibility="{Binding HasScriptExtenderSettings, Converter={StaticResource BoolToVisibilityConverter}}">
-					<Run Foreground="Goldenrod" Text="Script Extender " /><Run Foreground="Lime" Text="v" /><Run Foreground="Lime" Text="{Binding ScriptExtenderData.RequiredExtensionVersion}" />
+					<Run Foreground="Goldenrod" Text="{x:Static loc:Resources.ScriptExtender}" /><Run Foreground="Lime" Text="v" /><Run Foreground="Lime" Text="{Binding ScriptExtenderData.RequiredExtensionVersion}" />
 				</TextBlock>
 				<TextBlock Margin="2">
-					<Run Text="Last Updated on " /><Run Text="{Binding LastUpdated, StringFormat={x:Static dapp:DivinityApp.DateTimeTooltipFormat}}" />
+					<Run Text="{x:Static loc:Resources.LastUpdatedOn}" /><Run Text="{Binding LastUpdated, StringFormat={x:Static dapp:DivinityApp.DateTimeTooltipFormat}}" />
 				</TextBlock>
 			</StackPanel>
 			<StackPanel
@@ -623,12 +624,9 @@
 				Orientation="Vertical"
 				Visibility="{Binding HasBuiltinOverride, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}">
 				<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
-				<TextBlock Foreground="OrangeRed">
-					This mod overrides base game files directly.<LineBreak />
-					As long as this mod exists in the Mods folder,<LineBreak />
-					these files will be overwritten, even if the mod is disabled.</TextBlock>
-				<TextBlock Text="If this is intended, you can ignore this warning." />
-				<TextBlock Foreground="OrangeRed" Text="Overwritten builtin folders:" />
+				<TextBlock Foreground="OrangeRed">{x:Static loc:Resources.OverrideWarning}</TextBlock>
+				<TextBlock Text="{x:Static loc:Resources.OverrideWarning2}" />
+				<TextBlock Foreground="OrangeRed" Text="{x:Static loc:Resources.OverwrittenFolders}" />
 				<TextBlock Text="{Binding BuiltinOverrideModsText}" />
 			</StackPanel>
 		</StackPanel>
@@ -686,19 +684,19 @@
 				<TextBlock
 					Margin="2"
 					Foreground="Red"
-					Text=" (Classic)"
+					Text=" {x:Static loc:Resources.ClassicMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
 				<TextBlock
 					Margin="2"
 					Foreground="Lime"
-					Text=" (Definitive Edition)"
+					Text=" {x:Static loc:Resources.DefinitiveEditionMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
 				Margin="2"
 				TextWrapping="Wrap"
-				Visibility="{Binding AuthorVisibility, FallbackValue=Collapsed}"><Run Text="Created by " /><Run
+				Visibility="{Binding AuthorVisibility, FallbackValue=Collapsed}"><Run Text="{x:Static loc:Resources.AuthorTip}" /><Run
 					FontWeight="Bold"
 					Foreground="#3da2fa"
 					Text="{Binding Author}" />
@@ -720,7 +718,7 @@
 				Margin="2"
 				Orientation="Vertical"
 				Visibility="{Binding DependencyVisibility, FallbackValue=Collapsed}">
-				<TextBlock FontWeight="Bold" Text="Dependencies:" />
+				<TextBlock FontWeight="Bold" Text="{x:Static loc:Resources.DependenciesTip}" />
 				<ListBox
 					Margin="2"
 					Padding="0"
@@ -743,7 +741,7 @@
 							<TextBlock
 								Padding="12,2"
 								Foreground="{DynamicResource {x:Static adonisUI:Brushes.Layer3InteractionForegroundBrush}}"
-								Text="Adventure">
+								Text="{x:Static loc:Resources.Adventure}">
 								<TextBlock.Effect>
 									<DropShadowEffect
 										BlurRadius="4"
@@ -821,19 +819,19 @@
 				<TextBlock
 					Margin="2"
 					Foreground="Red"
-					Text=" (Classic)"
+					Text=" {x:Static loc:Resources.ClassicMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
 				<TextBlock
 					Margin="2"
 					Foreground="Lime"
-					Text=" (Definitive Edition)"
+					Text=" {x:Static loc:Resources.DefinitiveEditionMod}"
 					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
 				Margin="2"
 				TextWrapping="Wrap"
-				Visibility="{Binding AuthorVisibility}"><Run Text="Created by " /><Run
+				Visibility="{Binding AuthorVisibility}"><Run Text="{x:Static loc:Resources.AuthorTip}" /><Run
 					FontWeight="Bold"
 					Foreground="#3da2fa"
 					Text="{Binding Author}" />
@@ -865,7 +863,7 @@
 							<TextBlock
 								Padding="12,2"
 								Foreground="{DynamicResource {x:Static adonisUI:Brushes.Layer3InteractionForegroundBrush}}"
-								Text="GM Campaign">
+								Text="{x:Static loc:Resources.GMCampaign}">
 								<TextBlock.Effect>
 									<DropShadowEffect
 										BlurRadius="4"
@@ -993,7 +991,7 @@
 		<GridView.Columns>
 			<GridViewColumn
 				Width="40"
-				behavior:ScreenReaderHelperBehavior.HelpText="The mod order index column"
+				behavior:ScreenReaderHelperBehavior.HelpText="{x:Static loc:Resources.IndexHelpText}"
 				behavior:ScreenReaderHelperBehavior.Name="Index"
 				Header="#"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
@@ -1008,12 +1006,12 @@
 			</GridViewColumn>
 			<GridViewColumn Width="400" CellTemplate="{StaticResource ModNameTemplate}">
 				<GridViewColumn.Header>
-					<TextBlock Text="Name" />
+					<TextBlock Text="{x:Static loc:Resources.Name}" />
 				</GridViewColumn.Header>
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="Version"
+				Header="{x:Static loc:Resources.Version}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1023,7 +1021,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="100"
-				Header="Author"
+				Header="{x:Static loc:Resources.Author}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1033,7 +1031,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="Auto"
-				Header="Last Updated"
+				Header="{x:Static loc:Resources.LastUpdatedHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1059,7 +1057,7 @@
 		<GridView.Columns>
 			<GridViewColumn
 				Width="40"
-				behavior:ScreenReaderHelperBehavior.HelpText="The mod order index column"
+				behavior:ScreenReaderHelperBehavior.HelpText="{x:Static loc:Resources.IndexHelpText}"
 				behavior:ScreenReaderHelperBehavior.Name="Index"
 				Header="#"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
@@ -1074,12 +1072,12 @@
 			</GridViewColumn>
 			<GridViewColumn Width="400" CellTemplate="{StaticResource ModNameTemplate}">
 				<GridViewColumn.Header>
-					<TextBlock Text="Name" />
+					<TextBlock Text="{x:Static loc:Resources.Name}" />
 				</GridViewColumn.Header>
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="Version"
+				Header="{x:Static loc:Resources.Version}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1089,7 +1087,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="100"
-				Header="Author"
+				Header="{x:Static loc:Resources.Author}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1099,7 +1097,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="Auto"
-				Header="Last Updated"
+				Header="{x:Static loc:Resources.LastUpdatedHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1118,11 +1116,11 @@
 			<GridViewColumn
 				Width="400"
 				CellTemplate="{StaticResource ModNameTemplate}"
-				Header="Name"
+				Header="{x:Static loc:Resources.Name}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}" />
 			<GridViewColumn
 				Width="80"
-				Header="Version"
+				Header="{x:Static loc:Resources.Version}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1132,7 +1130,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="100"
-				Header="Author"
+				Header="{x:Static loc:Resources.Author}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1142,7 +1140,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="Auto"
-				Header="Last Updated"
+				Header="{x:Static loc:Resources.LastUpdatedHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1179,11 +1177,11 @@
 			<GridViewColumn
 				Width="400"
 				CellTemplate="{StaticResource ModNameTemplate}"
-				Header="Name"
+				Header="{x:Static loc:Resources.Name}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}" />
 			<GridViewColumn
 				Width="100"
-				Header="Author"
+				Header="{x:Static loc:Resources.Author}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1193,7 +1191,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="Version"
+				Header="{x:Static loc:Resources.Version}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1213,7 +1211,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="Auto"
-				Header="Modes"
+				Header="{x:Static loc:Resources.Modes}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1253,11 +1251,11 @@
 			<GridViewColumn
 				Width="400"
 				CellTemplate="{StaticResource ModUpdateNameTemplate}"
-				Header="Name"
+				Header="{x:Static loc:Resources.Name}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}" />
 			<GridViewColumn
 				Width="100"
-				Header="Author"
+				Header="{x:Static loc:Resources.Author}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1267,7 +1265,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="Current"
+				Header="{x:Static loc:Resources.Current}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.HeaderContainerStyle>
 					<Style BasedOn="{StaticResource GridViewLeftContainerStyle}" TargetType="{x:Type GridViewColumnHeader}">
@@ -1282,7 +1280,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="New"
+				Header="{x:Static loc:Resources.New}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.HeaderContainerStyle>
 					<Style BasedOn="{StaticResource GridViewLeftContainerStyle}" TargetType="{x:Type GridViewColumnHeader}">
@@ -1297,7 +1295,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="100"
-				Header="Modified Date"
+				Header="{x:Static loc:Resources.ModifiedDateHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.HeaderContainerStyle>
 					<Style BasedOn="{StaticResource GridViewLeftContainerStyle}" TargetType="{x:Type GridViewColumnHeader}">
@@ -1312,7 +1310,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="80"
-				Header="Type"
+				Header="{x:Static loc:Resources.TypeHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1322,7 +1320,7 @@
 			</GridViewColumn>
 			<GridViewColumn
 				Width="Auto"
-				Header="Modes"
+				Header="{x:Static loc:Resources.ModesHeader}"
 				HeaderTemplate="{StaticResource GridViewTextblockHeaderTemplate}">
 				<GridViewColumn.CellTemplate>
 					<DataTemplate>
@@ -1582,18 +1580,18 @@
 										Padding="6,0,6,0"
 										Command="{Binding Path=CopyToClipboardCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 										CommandParameter="{Binding ElementName=MessageText, Path=Text}"
-										Content="Copy to Clipboard"
+										Content="{x:Static loc:Resources.CopyToClipboardTooltip}"
 										Style="{TemplateBinding OkButtonStyle}"
-										ToolTip="Copy to Clipboard" />
+										ToolTip="{x:Static loc:Resources.CopyToClipboardTooltip}" />
 									<Button
 										Grid.Column="1"
 										MinWidth="65"
 										Margin="6,0,0,0"
 										Padding="6,0,6,0"
 										Command="{Binding Path=ClearMissingModsCommand, Source={x:Static dapp:DivinityApp.Commands}}"
-										Content="Remove All Missing"
+										Content="{x:Static loc:Resources.ClearMissingModsButton}"
 										Style="{TemplateBinding OkButtonStyle}"
-										ToolTip="Remove all missing mods from the load order." />
+										ToolTip="{x:Static loc:Resources.ClearMissingModsButtonTooltip}" />
 								</Grid>
 								<Grid Grid.Column="1" HorizontalAlignment="Right">
 									<Grid.ColumnDefinitions>

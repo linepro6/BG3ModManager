@@ -13,6 +13,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:reactiveui="http://reactiveui.net"
     xmlns:vm="clr-namespace:DivinityModManager.ViewModels"
+    xmlns:loc="clr-namespace:DivinityModManager.Properties"
     d:DesignHeight="450"
     d:DesignWidth="800"
     IsEnabled="{Binding Unlocked, Mode=OneWay}"
@@ -54,7 +55,7 @@
                 <TextBlock
                     Background="{DynamicResource {x:Static adonisUI:Brushes.Layer3BackgroundBrush}}"
                     FontSize="24"
-                    Text="Mod Updates"
+                    Text="{x:Static loc:Resources.ModUpdates}"
                     TextAlignment="Center" />
                 <Rectangle Height="2" Fill="LightGray" />
             </StackPanel>
@@ -66,7 +67,7 @@
                 <TextBlock
                     Background="{DynamicResource {x:Static adonisUI:Brushes.Layer4BackgroundBrush}}"
                     FontSize="20"
-                    Text="New Mods"
+                    Text="{x:Static loc:Resources.NewMods}"
                     TextAlignment="Center" />
                 <controls:ModListView
 					x:Name="NewFilesModListView"
@@ -91,7 +92,7 @@
 				<TextBlock
                     Background="{DynamicResource {x:Static adonisUI:Brushes.Layer4BackgroundBrush}}"
                     FontSize="20"
-                    Text="Updates"
+                    Text="{x:Static loc:Resources.Updates}"
                     TextAlignment="Center" />
 				<controls:ModListView
 					x:Name="UpdatesModListView"
@@ -110,7 +111,7 @@
                     <Button
                         Padding="8,2"
                         Command="{Binding CopySelectedModsCommand}"
-                        Content="Copy Selected to Mods Folder" />
+                        Content="{x:Static loc:Resources.CopySelectedModsButton}" />
                 </StackPanel>
             </Grid>
         </Grid>

@@ -15,6 +15,7 @@
 	xmlns:reactiveui="http://reactiveui.net"
 	xmlns:vm="clr-namespace:DivinityModManager.ViewModels"
 	xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+	xmlns:loc="clr-namespace:DivinityModManager.Properties"
 	mc:Ignorable="d">
 	<UserControl.Resources>
 		<ResourceDictionary>
@@ -89,7 +90,7 @@
 				<TextBlock
 					Background="{DynamicResource {x:Static adonisUI:Brushes.Layer3BackgroundBrush}}"
 					FontSize="24"
-					Text="Files to Delete"
+					Text="{x:Static loc:Resources.FilesToDelete}"
 					TextAlignment="Center" />
 				<Rectangle Height="2" Fill="LightGray" />
 			</StackPanel>
@@ -162,26 +163,26 @@
 							x:Name="DeletionOptionCheckbox"
 							Margin="8"
 							HorizontalAlignment="Center"
-							Content="Permanent"
-							ToolTip="Delete files permanently, instead of moving them to the Reycling Bin." />
+							Content="{x:Static loc:Resources.Permanent}"
+							ToolTip="{x:Static loc:Resources.DeletionOptionCheckboxTooltip}" />
 						<CheckBox
 							x:Name="RemoveFromLoadOrderCheckbox"
 							Margin="8"
 							HorizontalAlignment="Center"
-							Content="Remove from Load Order"
-							ToolTip="Remove deleted mods from the active load order." />
+							Content="{x:Static loc:Resources.RemoveFromLoadOrderCheckboxContent}"
+							ToolTip="{x:Static loc:Resources.RemoveFromLoadOrderCheckboxTooltip}" />
 					</StackPanel>
 					<StackPanel Grid.Row="2" Orientation="Horizontal">
 						<Button
 							x:Name="ConfirmButton"
 							Margin="4,0"
 							Padding="12,2"
-							Content="Delete" />
+							Content="{x:Static loc:Resources.Delete}" />
 						<Button
 							x:Name="CancelButton"
 							Margin="4,0"
 							Padding="12,2"
-							Content="Cancel" />
+							Content="{x:Static loc:Resources.Cancel}" />
 					</StackPanel>
 				</Grid>
 			</Grid>

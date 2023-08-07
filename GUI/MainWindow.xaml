@@ -19,6 +19,7 @@
 	xmlns:reactiveui="http://reactiveui.net"
 	xmlns:vm="clr-namespace:DivinityModManager.ViewModels"
 	xmlns:xc="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:loc="clr-namespace:DivinityModManager.Properties"
 	x:Name="Main"
 	Title="{Binding Title}"
 	Width="1600"
@@ -66,7 +67,7 @@
 						BorderThickness="0"
 						Command="{Binding ToggleUpdatesViewCommand}"
 						Style="{StaticResource UpdateButtonStyle}"
-						ToolTip="Toggle the Mod Updates View">
+						ToolTip="{x:Static loc:Resources.UpdateViewToggleButtonTooltip}">
 						<Button.Content>
 							<Grid>
 								<Grid.ColumnDefinitions>
@@ -79,7 +80,7 @@
 									HorizontalAlignment="Center"
 									VerticalAlignment="Center"
 									Foreground="{DynamicResource {x:Static adonisUI:Brushes.ForegroundBrush}}"
-									Text="Updates:"
+									Text="{x:Static loc:Resources.Updates}"
 									TextAlignment="Center" />
 								<controls:BusyIndicator
 									Grid.Column="1"
@@ -212,7 +213,7 @@
 						<TextBlock
 							Margin="0,0,4,0"
 							VerticalAlignment="Center"
-							Text="Profile" />
+							Text="{x:Static loc:Resources.Profile}" />
 						<ComboBox
 							x:Name="ProfilesComboBox"
 							Grid.Column="1"
@@ -247,7 +248,7 @@
 						<TextBlock
 							Margin="0,0,4,0"
 							VerticalAlignment="Center"
-							Text="Mod Order" />
+							Text="{x:Static loc:Resources.ModOrder}" />
 						<ComboBox
 							x:Name="OrdersComboBox"
 							Grid.Column="1"
@@ -301,7 +302,7 @@
 							<Button
 								x:Name="SaveButton"
 								Command="{Binding Keys.Save.Command}"
-								ToolTip="Save Load Order to File">
+								ToolTip="{x:Static loc:Resources.SaveButtonTooltip}">
 								<Button.Resources>
 									<Style BasedOn="{StaticResource {x:Type controls:AutoGrayableImage}}" TargetType="{x:Type controls:AutoGrayableImage}">
 										<Style.Triggers>
@@ -319,13 +320,13 @@
 							<Button
 								x:Name="SaveAsButton"
 								Command="{Binding Keys.SaveAs.Command}"
-								ToolTip="Save Order As...">
+								ToolTip="{x:Static loc:Resources.SaveAsButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource SaveAsImage}" />
 							</Button>
 							<Button
 								x:Name="AddNewOrderButton"
 								Command="{Binding Keys.NewOrder.Command}"
-								ToolTip="Add New Load Order">
+								ToolTip="{x:Static loc:Resources.AddNewOrderButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource AddItemImage}" />
 							</Button>
 						</StackPanel>
@@ -335,41 +336,41 @@
 							Style="{StaticResource VerticalSeparator}" />
 						<StackPanel Grid.Column="2" Orientation="Horizontal">
 							<StackPanel.Resources />
-							<TextBlock Text="Export" />
+							<TextBlock Text="{x:Static loc:Resources.Export}" />
 							<Button
 								x:Name="ExportToModSettingsButton"
 								Command="{Binding Keys.ExportOrderToGame.Command}"
-								ToolTip="Export Order to Game">
+								ToolTip="{x:Static loc:Resources.ExportToModSettingsButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource ExportScriptImage}" />
 								<Button.ContextMenu>
 									<ContextMenu>
 										<MenuItem
 											Command="{Binding Path=OpenFileCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 											CommandParameter="{Binding SelectedProfile.ModSettingsFile}"
-											Header="Open Exported Mod Order File..." />
+											Header="{x:Static loc:Resources.OpenExportedModOrderFileHeader}" />
 										<MenuItem
 											Command="{Binding Path=OpenInFileExplorerCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 											CommandParameter="{Binding SelectedProfile.ModSettingsFile}"
-											Header="Open in File Explorer..." />
+											Header="{x:Static loc:Resources.OpenModSettingsInFileExplorerHeader}" />
 										<MenuItem
 											Command="{Binding CopyPathToClipboardCommand}"
 											CommandParameter="{Binding SelectedProfile.ModSettingsFile}"
-											Header="Copy Path to Clipboard" />
-										<MenuItem Command="{Binding CopyOrderToClipboardCommand}" Header="Copy Order to Clipboard" />
-										<MenuItem Command="{Binding ExportOrderAsListCommand}" Header="Export Order As List..." />
+											Header="{x:Static loc:Resources.CopyPathToClipboardHeader}" />
+										<MenuItem Command="{Binding CopyOrderToClipboardCommand}" Header="{x:Static loc:Resources.CopyOrderToClipboardHeader}" />
+										<MenuItem Command="{Binding ExportOrderAsListCommand}" Header="{x:Static loc:Resources.ExportOrderAsListHeader}" />
 									</ContextMenu>
 								</Button.ContextMenu>
 							</Button>
 							<Button
 								x:Name="ExportOrderToArchiveButton"
 								Command="{Binding Keys.ExportOrderToZip.Command}"
-								ToolTip="Export Active Mods to Zip">
+								ToolTip="{x:Static loc:Resources.ExportOrderToArchiveTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource ZipFileImage}" />
 							</Button>
 							<Button
 								x:Name="ExportOrderToArchiveAsButton"
 								Command="{Binding Keys.ExportOrderToArchiveAs.Command}"
-								ToolTip="Export Active Mods to Zip As...">
+								ToolTip="{x:Static loc:Resources.ExportOrderToArchiveAsTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource ZipFileAsImage}" />
 							</Button>
 							<!--<Rectangle />
@@ -393,7 +394,7 @@
 							</Button>-->
 							<Rectangle />
 							<StackPanel Orientation="Horizontal">
-								<TextBlock Text="Campaign" />
+								<TextBlock Text="{x:Static loc:Resources.Campaign}" />
 								<ComboBox
 									x:Name="AdventureModComboBox"
 									Grid.Column="1"
@@ -413,11 +414,11 @@
 											<MenuItem
 												Command="{Binding Path=OpenInFileExplorerCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 												CommandParameter="{Binding FilePath}"
-												Header="Open Adventure Mod in File Explorer..." />
+												Header="{x:Static loc:Resources.OpenAdventureModInFileExplorerHeader}" />
 											<MenuItem
 												Command="{Binding Path=CopyToClipboardCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 												CommandParameter="{Binding FilePath}"
-												Header="Copy Mod Path to Clipboard" />
+												Header="{x:Static loc:Resources.CopyModPathToClipboardHeader}" />
 										</ContextMenu>
 									</ComboBox.ContextMenu>
 								</ComboBox>
@@ -452,47 +453,47 @@
 								</ComboBox>-->
 							</StackPanel>
 							<Rectangle />
-							<TextBlock Text="Refresh" />
+							<TextBlock Text="{x:Static loc:Resources.Refresh}" />
 							<Button
 								x:Name="RefreshButton"
 								Command="{Binding Keys.Refresh.Command}"
-								ToolTip="Refresh Mods and Workshop Updates">
+								ToolTip="{x:Static loc:Resources.RefreshButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource RefreshImage}" />
 							</Button>
 							<Rectangle />
-							<TextBlock Text="Shortcuts" />
+							<TextBlock Text="{x:Static loc:Resources.Shortcuts}" />
 							<Button
 								x:Name="OpenModsFolderButton"
 								Command="{Binding Keys.OpenModsFolder.Command}"
-								ToolTip="Open Mods Folder">
+								ToolTip="{x:Static loc:Resources.OpenModsFolderButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource OpenFolderImage}" />
 								<Button.ContextMenu>
 									<ContextMenu>
 										<MenuItem
 											Command="{Binding CopyPathToClipboardCommand}"
 											CommandParameter="{Binding PathwayData.DocumentsModsPath}"
-											Header="Copy Path to Clipboard" />
+											Header="{x:Static loc:Resources.CopyPathToClipboardHeader}" />
 									</ContextMenu>
 								</Button.ContextMenu>
 							</Button>
 							<Button
 								x:Name="OpenWorkshopFolderButton"
 								Command="{Binding Keys.OpenWorkshopFolder.Command}"
-								ToolTip="Open Workshop Folder">
+								ToolTip="{x:Static loc:Resources.OpenWorkshopFolderButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource OpenSteamWorkshopFolderImage}" />
 								<Button.ContextMenu>
 									<ContextMenu>
 										<MenuItem
 											Command="{Binding CopyPathToClipboardCommand}"
 											CommandParameter="{Binding Settings.WorkshopPath}"
-											Header="Copy Path to Clipboard" />
+											Header="{x:Static loc:Resources.CopyPathToClipboardHeader}" />
 									</ContextMenu>
 								</Button.ContextMenu>
 							</Button>
 							<Button
 								x:Name="OpenExtenderLogsFolderButton"
 								Command="{Binding Keys.OpenLogsFolder.Command}"
-								ToolTip="Open Logs Folder">
+								ToolTip="{x:Static loc:Resources.OpenExtenderLogsFolderButtonTooltip}">
 								<controls:AutoGrayableImage
 									Width="16"
 									Height="16"
@@ -502,25 +503,25 @@
 										<MenuItem
 											Command="{Binding CopyPathToClipboardCommand}"
 											CommandParameter="{Binding Settings.ExtenderLogDirectory}"
-											Header="Copy Path to Clipboard" />
+											Header="{x:Static loc:Resources.CopyPathToClipboardHeader}" />
 									</ContextMenu>
 								</Button.ContextMenu>
 							</Button>
 							<Button
 								x:Name="OpenGameButton"
 								Command="{Binding Keys.LaunchGame.Command}"
-								ToolTip="Launch Game">
+								ToolTip="{x:Static loc:Resources.OpenGameButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource OpenGameImage}" />
 								<Button.ContextMenu>
 									<ContextMenu>
 										<MenuItem
 											Command="{Binding Path=OpenInFileExplorerCommand, Source={x:Static dapp:DivinityApp.Commands}}"
 											CommandParameter="{Binding Settings.GameExecutablePath}"
-											Header="Open Game Folder..." />
+											Header="{x:Static loc:Resources.OpenGameFolderInFileExplorerHeader}" />
 										<MenuItem
 											Command="{Binding CopyPathToClipboardCommand}"
 											CommandParameter="{Binding Settings.GameExecutablePath}"
-											Header="Copy Path to Clipboard" />
+											Header="{x:Static loc:Resources.CopyPathToClipboardHeader}" />
 									</ContextMenu>
 								</Button.ContextMenu>
 							</Button>
@@ -530,19 +531,19 @@
 								ItemsSource="{Binding Source={ext:EnumExtension {x:Type dapp:DivinityGameLaunchWindowAction}}}"
 								SelectedValue="{Binding ActionOnGameLaunch, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
 								SelectedValuePath="Value"
-								ToolTip="When the game launches through the mod manager, this action will be performed" />
+								ToolTip="{x:Static loc:Resources.GameLaunchActionComboBoxTooltip}" />
 							<Rectangle />
-							<TextBlock Text="Support" />
+							<TextBlock Text="{x:Static loc:Resources.Support}" />
 							<Button
 								x:Name="OpenDonationPageButton"
 								Command="{Binding Keys.OpenDonationLink.Command}"
-								ToolTip="Donate a Coffee to the Developer (LaughingLeader)">
+								ToolTip="{x:Static loc:Resources.OpenDonationPageButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource OpenDonationLinkImage}" />
 							</Button>
 							<Button
 								x:Name="OpenRepoPageButton"
 								Command="{Binding Keys.OpenRepositoryPage.Command}"
-								ToolTip="Open Project Page (Github)">
+								ToolTip="{x:Static loc:Resources.OpenRepoPageButtonTooltip}">
 								<controls:AutoGrayableImage Source="{StaticResource OpenRepoLinkImage}" />
 							</Button>
 						</StackPanel>
@@ -703,16 +704,16 @@
 						<ColumnDefinition Width="*" />
 					</Grid.ColumnDefinitions>
 					<Menu x:Name="TopMenuBar" Padding="2">
-						<MenuItem x:Name="FileMenuItem" Header="File" />
-						<MenuItem x:Name="EditMenuItem" Header="Edit" />
-						<MenuItem x:Name="SettingsMenuItem" Header="Settings" />
-						<MenuItem x:Name="ViewMenuItem" Header="View" />
-						<MenuItem x:Name="GoMenuItem" Header="Go" />
+                        <MenuItem x:Name="FileMenuItem" Header="{x:Static loc:Resources.File}" />
+                        <MenuItem x:Name="EditMenuItem" Header="{x:Static loc:Resources.Edit}" />
+                        <MenuItem x:Name="SettingsMenuItem" Header="{x:Static loc:Resources.Settings}" />
+                        <MenuItem x:Name="ViewMenuItem" Header="{x:Static loc:Resources.View}" />
+                        <MenuItem x:Name="GoMenuItem" Header="{x:Static loc:Resources.Go}" />
 						<MenuItem
 							x:Name="ToolsMenuItem"
-							Header="Tools"
+							Header="{x:Static loc:Resources.Tools}"
 							Style="{StaticResource MenuItemHightlightBlink}" />
-						<MenuItem x:Name="HelpMenuItem" Header="Help" />
+                        <MenuItem x:Name="HelpMenuItem" Header="{x:Static loc:Resources.Help}" />
 					</Menu>
 					<StackPanel
 						Grid.Column="3"

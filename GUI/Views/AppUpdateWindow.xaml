@@ -8,7 +8,8 @@
                            xmlns:local="clr-namespace:DivinityModManager.Views"
                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                            xmlns:updater="clr-namespace:AutoUpdaterDotNET;assembly=AutoUpdater.NET"
-                           Title="Updater"
+						   xmlns:loc="clr-namespace:DivinityModManager.Properties"
+                           Title="{x:Static loc:Resources.Updater}"
                            Width="1200"
                            Height="600"
                            TitleBarBackground="#4e38c9"
@@ -45,7 +46,7 @@
 		<TextBlock Grid.Row="2"
 		           Padding="4"
 		           FontSize="24"
-		           Text="Changelog"
+		           Text="{x:Static loc:Resources.Changelog}"
 		           TextAlignment="Center" />
 		<FlowDocumentScrollViewer x:Name="UpdateChangelogView"
 		                          Grid.Row="3"
@@ -77,8 +78,8 @@
 				<Button x:Name="ConfirmButton"
 				        HorizontalAlignment="Center"
 				        Background="#FF267E26"
-				        Content="Download"
-				        ToolTip="Download Update">
+				        Content="{x:Static loc:Resources.Download}"
+				        ToolTip="{x:Static loc:Resources.DownloadUpdate}">
 					<Button.Resources>
 						<Style TargetType="Border">
 							<Setter Property="CornerRadius" Value="5" />
@@ -87,8 +88,8 @@
 				</Button>
 				<Button x:Name="SkipButton"
 				        HorizontalAlignment="Center"
-				        Content="Skip"
-				        ToolTip="Skip Update">
+				        Content="{x:Static loc:Resources.Skip}"
+				        ToolTip="{x:Static loc:Resources.SkipUpdate}">
 					<Button.Resources>
 						<Style TargetType="Border">
 							<Setter Property="CornerRadius" Value="5" />

@@ -9,6 +9,7 @@
 	xmlns:local="clr-namespace:DivinityModManager.Views"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:vm="clr-namespace:DivinityModManager.ViewModels"
+	xmlns:loc="clr-namespace:DivinityModManager.Properties"
 	d:DesignHeight="450"
 	d:DesignWidth="800"
 	mc:Ignorable="d">
@@ -26,7 +27,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
-			<TextBlock Padding="4" Text="Active Mods" />
+			<TextBlock Padding="4" Text="{x:Static loc:Resources.ActiveMods}" />
 			<controls:ModListView
 				Grid.Row="1"
 				dd:DragDrop.IsDragSource="True"
@@ -44,7 +45,7 @@
 				<RowDefinition Height="Auto" />
 				<RowDefinition Height="*" />
 			</Grid.RowDefinitions>
-			<TextBlock Padding="4" Text="Inactive Mods" />
+			<TextBlock Padding="4" Text="{x:Static loc:Resources.InactiveMods}" />
 			<controls:ModListView
 				Grid.Row="1"
 				dd:DragDrop.DropHandler="{Binding}"
