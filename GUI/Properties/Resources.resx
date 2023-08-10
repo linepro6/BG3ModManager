@@ -702,4 +702,7 @@
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="OverrideWarning3" xml:space="preserve">
+    <value>This mod can be rearranged in the load order, due to it also having files of its own. Note that disabling it will not disable the file overrides.</value>
+  </data>
 </root>

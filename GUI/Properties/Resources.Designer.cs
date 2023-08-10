@@ -1324,6 +1324,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 This mod can be rearranged in the load order, due to it also having files of its own. Note that disabling it will not disable the file overrides. 的本地化字符串。
+        /// </summary>
+        public static string OverrideWarning3 {
+            get {
+                return ResourceManager.GetString("OverrideWarning3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Overwritten builtin folders: 的本地化字符串。
         /// </summary>
         public static string OverwrittenFolders {

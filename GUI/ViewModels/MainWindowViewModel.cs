@@ -48,6 +48,7 @@ using SharpCompress.Readers;
 using System.Reactive.Subjects;
 using System.Windows.Markup;
 using DivinityModManager.Models.Extender;
+using DynamicData.Kernel;
 
 namespace DivinityModManager.ViewModels
 {
@@ -564,7 +565,7 @@ namespace DivinityModManager.ViewModels
 				Settings.WorkshopPath = "";
 			}
 
-			canOpenGameExe = this.WhenAnyValue(x => x.Settings.GameExecutablePath, (p) => !String.IsNullOrEmpty(p) && File.Exists(p)).StartWith(false);
+			canOpenGameExe = this.WhenAnyValue(x => x.Settings.GameExecutablePath, p => !String.IsNullOrEmpty(p) && File.Exists(p)).StartWith(false);
 			canOpenLogDirectory = this.WhenAnyValue(x => x.Settings.ExtenderLogDirectory, (f) => Directory.Exists(f)).StartWith(false);
 
 			Keys.DownloadScriptExtender.AddAction(() => InstallScriptExtender_Start());
@@ -628,11 +629,35 @@ namespace DivinityModManager.ViewModels
 					}
 				}
 
-				DivinityApp.Log($"Opening game exe at: {Settings.GameExecutablePath} with args {launchParams}");
+				if (Settings.SkipLauncher && launchParams.IndexOf("skip-launcher") < 0)
+				{
+					if (String.IsNullOrWhiteSpace(launchParams))
+					{
+						launchParams = "--skip-launcher";
+					}
+					else
+					{
+						launchParams = "--skip-launcher " + launchParams;
+					}
+				}
+
+				var exePath = Settings.GameExecutablePath;
+				var exeDir = Path.GetDirectoryName(exePath);
+
+				if (Settings.LaunchDX11)
+				{
+					var nextExe = Path.Combine(exeDir, "bg3_dx11.exe");
+					if(File.Exists(nextExe))
+					{
+						exePath = nextExe;
+					}
+				}
+
+				DivinityApp.Log($"Opening game exe at: {exePath} with args {launchParams}");
 				Process proc = new Process();
-				proc.StartInfo.FileName = Settings.GameExecutablePath;
+				proc.StartInfo.FileName = exePath;
 				proc.StartInfo.Arguments = launchParams;
-				proc.StartInfo.WorkingDirectory = Path.GetDirectoryName(Settings.GameExecutablePath);
+				proc.StartInfo.WorkingDirectory = exeDir;
 				proc.Start();
 
 				if (Settings.ActionOnGameLaunch != DivinityGameLaunchWindowAction.None)
@@ -1038,7 +1063,8 @@ namespace DivinityModManager.ViewModels
 				{
 					string installPath = DivinityRegistryHelper.GetGameInstallPath(AppSettings.DefaultPathways.Steam.RootFolderName,
 						AppSettings.DefaultPathways.GOG.Registry_32, AppSettings.DefaultPathways.GOG.Registry_64);
-					if (Directory.Exists(installPath))
+
+					if (!String.IsNullOrEmpty(installPath) && Directory.Exists(installPath))
 					{
 						PathwayData.InstallPath = installPath;
 						if (!File.Exists(Settings.GameExecutablePath))
@@ -1060,8 +1086,15 @@ namespace DivinityModManager.ViewModels
 						}
 
 						string gameDataPath = Path.Combine(installPath, AppSettings.DefaultPathways.GameDataFolder).Replace("\\", "/");
-						DivinityApp.Log($"Set game data path to '{gameDataPath}'.");
-						Settings.GameDataPath = gameDataPath;
+						if (Directory.Exists(gameDataPath))
+						{
+							DivinityApp.Log($"Set game data path to '{gameDataPath}'.");
+							Settings.GameDataPath = gameDataPath;
+						}
+						else
+						{
+							DivinityApp.Log($"Failed to find game data path at '{gameDataPath}'.");
+						}
 					}
 				}
 				else
@@ -1084,6 +1117,42 @@ namespace DivinityModManager.ViewModels
 							Settings.GameExecutablePath = exePath.Replace("\\", "/");
 							DivinityApp.Log($"Exe path set to '{exePath}'.");
 						}
+					}
+				}
+
+
+				if (!Directory.Exists(Settings.GameDataPath) || !File.Exists(Settings.GameExecutablePath))
+				{
+					DivinityApp.Log("Failed to find game data path. Asking user for help.");
+
+					var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog()
+					{
+						Multiselect = false,
+						Description = "Set the path to the Baldur's Gate 3 root installation folder",
+						UseDescriptionForTitle = true,
+						SelectedPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
+					};
+					if (dialog.ShowDialog(View.Main) == true)
+					{
+						var dataDirectory = Path.Combine(dialog.SelectedPath, AppSettings.DefaultPathways.GameDataFolder);
+						var exePath = Path.Combine(dialog.SelectedPath, AppSettings.DefaultPathways.Steam.ExePath);
+						if (!File.Exists(exePath))
+						{
+							exePath = Path.Combine(dialog.SelectedPath, AppSettings.DefaultPathways.GOG.ExePath);
+						}
+						if (Directory.Exists(dataDirectory))
+						{
+							Settings.GameDataPath = dataDirectory;
+						}
+						else
+						{
+							ShowAlert("Failed to find Data folder with given installation directory.", AlertType.Danger);
+						}
+						if(File.Exists(exePath))
+						{
+							Settings.GameExecutablePath = exePath;
+						}
+						PathwayData.InstallPath = dialog.SelectedPath;
 					}
 				}
 
@@ -1377,7 +1446,7 @@ namespace DivinityModManager.ViewModels
 							}*/
 
 							//Adds mods that will always be "enabled"
-							//ForceLoadedMods.AddRange(Mods.Where(x => !x.IsActive && x.IsForcedLoaded));
+							//ForceLoadedMods.AddRange(Mods.Where(x => !x.IsActive && x.IsForceLoaded));
 
 							Settings.LastOrder = nextOrder?.Name;
 						}
@@ -1396,14 +1465,29 @@ namespace DivinityModManager.ViewModels
 			bool success = false;
 			if (Path.GetExtension(filePath).Equals(".pak", StringComparison.OrdinalIgnoreCase))
 			{
+				var builtinMods = DivinityApp.IgnoredMods.ToDictionary(x => x.Folder, x => x);
+				var outputFilePath = Path.Combine(PathwayData.DocumentsModsPath, Path.GetFileName(filePath));
 				try
 				{
 					using (System.IO.FileStream sourceStream = File.Open(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read, System.IO.FileShare.Read, 8192, true))
 					{
-						using (System.IO.FileStream destinationStream = File.Create(Path.Combine(PathwayData.DocumentsModsPath, Path.GetFileName(filePath))))
+						using (System.IO.FileStream destinationStream = File.Create(outputFilePath))
 						{
 							await sourceStream.CopyToAsync(destinationStream, 8192, t);
 							success = true;
+						}
+					}
+
+					if (success)
+					{
+						var mod = await DivinityModDataLoader.LoadModDataFromPakAsync(outputFilePath, builtinMods, t);
+						if (mod != null)
+						{
+							await Observable.Start(() =>
+							{
+								AddImportedMod(mod);
+								return Unit.Default;
+							}, RxApp.MainThreadScheduler);
 						}
 					}
 				}
@@ -1970,6 +2054,12 @@ namespace DivinityModManager.ViewModels
 					}
 					BuildModOrderList(0, lastOrderName);
 					MainProgressValue += taskStepAmount;
+
+					if(!GameDirectoryFound)
+					{
+						ShowAlert("Game Data folder is not valid. Please set it in the preferences window and refresh.", AlertType.Danger);
+						View.OpenPreferences(false, true);
+					}
 					return Unit.Default;
 				}, RxApp.MainThreadScheduler);
 
@@ -2563,11 +2653,36 @@ namespace DivinityModManager.ViewModels
 			}
 		}
 
+		private void AddImportedMod(DivinityModData mod)
+		{
+			var existingMod = mods.Items.FirstOrDefault(x => x.UUID == mod.UUID);
+			if (existingMod != null)
+			{
+				mod.IsSelected = existingMod.IsSelected;
+				if (existingMod.IsActive)
+				{
+					mod.Index = existingMod.Index;
+					ActiveMods.ReplaceOrAdd(existingMod, mod);
+				}
+				else
+				{
+					InactiveMods.ReplaceOrAdd(existingMod, mod);
+				}
+			}
+			else
+			{
+				InactiveMods.Add(mod);
+			}
+			mods.AddOrUpdate(mod);
+			DivinityApp.Log($"Imported Mod: {mod}");
+		}
+
 		private async Task<bool> ImportSevenZipArchiveAsync(string outputDirectory, System.IO.Stream stream, Dictionary<string, string> jsonFiles, CancellationToken t)
 		{
 			int successes = 0;
 			int total = 0;
 			stream.Position = 0;
+			var builtinMods = DivinityApp.IgnoredMods.ToDictionary(x => x.Folder, x => x);
 			using (var archiveStream = SevenZipArchive.Open(stream))
 			{
 				foreach (var entry in archiveStream.Entries)
@@ -2579,6 +2694,7 @@ namespace DivinityModManager.ViewModels
 						{
 							total += 1;
 							string outputFilePath = Path.Combine(outputDirectory, entry.Key);
+							var success = false;
 							using (var entryStream = entry.OpenEntryStream())
 							{
 								using (var fs = File.Create(outputFilePath, 4096, System.IO.FileOptions.Asynchronous))
@@ -2586,12 +2702,25 @@ namespace DivinityModManager.ViewModels
 									try
 									{
 										await entryStream.CopyToAsync(fs, 4096, MainProgressToken.Token);
-										successes += 1;
+										success = true;
 									}
 									catch (Exception ex)
 									{
 										DivinityApp.Log($"Error copying file '{entry.Key}' from archive to '{outputFilePath}':\n{ex}");
 									}
+								}
+							}
+							if (success)
+							{
+								var mod = await DivinityModDataLoader.LoadModDataFromPakAsync(outputFilePath, builtinMods, t);
+								if (mod != null)
+								{
+									successes += 1;
+									await Observable.Start(() =>
+									{
+										AddImportedMod(mod);
+										return Unit.Default;
+									}, RxApp.MainThreadScheduler);
 								}
 							}
 						}
@@ -2629,6 +2758,7 @@ namespace DivinityModManager.ViewModels
 			int successes = 0;
 			int total = 0;
 			stream.Position = 0;
+			var builtinMods = DivinityApp.IgnoredMods.ToDictionary(x => x.Folder, x => x);
 			using (var reader = SharpCompress.Readers.ReaderFactory.Open(stream))
 			{
 				while (reader.MoveToNextEntry())
@@ -2640,6 +2770,7 @@ namespace DivinityModManager.ViewModels
 						{
 							total += 1;
 							string outputFilePath = Path.Combine(outputDirectory, reader.Entry.Key);
+							bool success = false;
 							using (var entryStream = reader.OpenEntryStream())
 							{
 								using (var fs = File.Create(outputFilePath, 4096, System.IO.FileOptions.Asynchronous))
@@ -2647,12 +2778,27 @@ namespace DivinityModManager.ViewModels
 									try
 									{
 										await entryStream.CopyToAsync(fs, 4096, MainProgressToken.Token);
+										success = true;
 										successes += 1;
 									}
 									catch (Exception ex)
 									{
 										DivinityApp.Log($"Error copying file '{reader.Entry.Key}' from archive to '{outputFilePath}':\n{ex}");
 									}
+								}
+							}
+
+							if (success)
+							{
+								var mod = await DivinityModDataLoader.LoadModDataFromPakAsync(outputFilePath, builtinMods, t);
+								if (mod != null)
+								{
+									successes += 1;
+									await Observable.Start(() =>
+									{
+										AddImportedMod(mod);
+										return Unit.Default;
+									}, RxApp.MainThreadScheduler);
 								}
 							}
 						}
@@ -3633,13 +3779,16 @@ namespace DivinityModManager.ViewModels
 				SelectedModOrder.Order.RemoveAll(x => deletedMods.Contains(x.UUID));
 				SelectedProfile.ModOrder.RemoveMany(deletedMods);
 				SelectedProfile.ActiveMods.RemoveAll(x => deletedMods.Contains(x.UUID));
-				SaveLoadOrder(true);
+				//SaveLoadOrder(true);
 			}
 
 			if (deletedWorkshopMods != null && deletedWorkshopMods.Count > 0)
 			{
 				workshopMods.RemoveKeys(deletedWorkshopMods);
 			}
+
+			InactiveMods.RemoveMany(InactiveMods.Where(x => deletedMods.Contains(x.UUID)));
+			ActiveMods.RemoveMany(ActiveMods.Where(x => deletedMods.Contains(x.UUID)));
 		}
 
 		private void ExtractSelectedMods_ChooseFolder()
@@ -4298,7 +4447,6 @@ Directory the zip will be extracted to:
 				RxApp.TaskpoolScheduler.ScheduleAsync(RefreshAsync);
 			}, canRefreshObservable, RxApp.MainThreadScheduler);
 
-
 			Keys.Refresh.AddAction(() => RefreshCommand.Execute(Unit.Default).Subscribe(), canRefreshObservable);
 
 			var canRefreshWorkshop = this.WhenAnyValue(x => x.IsRefreshing, x => x.IsRefreshingWorkshop, x => x.AppSettingsLoaded, (b1, b2, b3) => !b1 && !b2 && b3 && AppSettings.FeatureEnabled("Workshop")).StartWith(false);
@@ -4556,7 +4704,7 @@ Directory the zip will be extracted to:
 
 			modsConnection.Filter(x => x.IsUserMod).Bind(out _userMods).Subscribe();
 			modsConnection.Filter(x => x.CanAddToLoadOrder).Bind(out addonMods).Subscribe();
-			modsConnection.Filter(x => x.IsForcedLoaded).ObserveOn(RxApp.MainThreadScheduler).Bind(out _forceLoadedMods).Subscribe();
+			modsConnection.Filter(x => x.IsForceLoaded && !x.IsForceLoadedMergedMod).ObserveOn(RxApp.MainThreadScheduler).Bind(out _forceLoadedMods).Subscribe();
 
 			//Throttle filters so they only happen when typing stops for 500ms
 
@@ -4748,7 +4896,7 @@ Directory the zip will be extracted to:
 			DivinityInteractions.ConfirmModDeletion.RegisterHandler((Func<InteractionContext<DeleteFilesViewConfirmationData, bool>, Task>)(async interaction =>
 			{
 				var sentenceStart = interaction.Input.PermanentlyDelete ? "Permanently delete" : "Delete";
-				var msg = $"{sentenceStart} {interaction.Input.Total} mod files?";
+				var msg = $"{sentenceStart} {interaction.Input.Total} mod file(s)?";
 
 				var confirmed = await Observable.Start((Func<bool>)(() =>
 				{

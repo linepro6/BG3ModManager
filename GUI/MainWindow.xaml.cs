@@ -147,6 +147,7 @@ namespace DivinityModManager.Views
 
 				this.DeleteFilesView.ViewModel.FileDeletionComplete += (o, e) =>
 				{
+					DivinityApp.Log($"Deleted {e.TotalFilesDeleted} file(s).");
 					if (e.TotalFilesDeleted > 0)
 					{
 						var deletedUUIDs = e.DeletedFiles.Where(x => !x.IsWorkshop).Select(x => x.UUID).ToHashSet();
@@ -200,7 +201,7 @@ namespace DivinityModManager.Views
 			//Trace.WriteLine($"[OnGotFocus] {sender} {e.Source}");
 		}
 
-		private void OpenPreferences(bool switchToKeybindings = false)
+		public void OpenPreferences(bool switchToKeybindings = false, bool forceOpen = false)
 		{
 			if (!SettingsWindow.IsVisible)
 			{
@@ -213,7 +214,7 @@ namespace DivinityModManager.Views
 				SettingsWindow.Owner = this;
 				ViewModel.Settings.SettingsWindowIsOpen = true;
 			}
-			else
+			else if(!forceOpen)
 			{
 				SettingsWindow.Hide();
 				ViewModel.Settings.SettingsWindowIsOpen = false;

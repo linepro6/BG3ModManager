@@ -534,16 +534,6 @@
 							Color="Black" />
 					</TextBlock.Effect>
 				</TextBlock>
-				<TextBlock
-					Margin="2"
-					Foreground="Red"
-					Text="{x:Static loc:Resources.ClassicMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
-				<TextBlock
-					Margin="2"
-					Foreground="Lime"
-					Text="{x:Static loc:Resources.DefinitiveEditionMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
@@ -622,10 +612,14 @@
 			<StackPanel
 				Margin="2"
 				Orientation="Vertical"
-				Visibility="{Binding HasBuiltinOverride, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}">
+				Visibility="{Binding IsForceLoaded, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}">
 				<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 				<TextBlock Foreground="OrangeRed">{x:Static loc:Resources.OverrideWarning}</TextBlock>
 				<TextBlock Text="{x:Static loc:Resources.OverrideWarning2}" />
+				<TextBlock
+					Foreground="Lime"
+					Text="{x:Static loc:Resources.OverrideWarning3}"
+					Visibility="{Binding IsForceLoadedMergedMod, Converter={StaticResource BoolToVisibilityConverter}, FallbackValue=Collapsed}" />
 				<TextBlock Foreground="OrangeRed" Text="{x:Static loc:Resources.OverwrittenFolders}" />
 				<TextBlock Text="{Binding BuiltinOverrideModsText}" />
 			</StackPanel>
@@ -681,16 +675,6 @@
 							Color="Black" />
 					</TextBlock.Effect>
 				</TextBlock>
-				<TextBlock
-					Margin="2"
-					Foreground="Red"
-					Text=" {x:Static loc:Resources.ClassicMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
-				<TextBlock
-					Margin="2"
-					Foreground="Lime"
-					Text=" {x:Static loc:Resources.DefinitiveEditionMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
@@ -816,16 +800,6 @@
 							Color="Black" />
 					</TextBlock.Effect>
 				</TextBlock>
-				<TextBlock
-					Margin="2"
-					Foreground="Red"
-					Text=" {x:Static loc:Resources.ClassicMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverter}}" />
-				<TextBlock
-					Margin="2"
-					Foreground="Lime"
-					Text=" {x:Static loc:Resources.DefinitiveEditionMod}"
-					Visibility="{Binding IsClassicMod, Converter={StaticResource BoolToVisibilityConverterReversed}}" />
 			</StackPanel>
 			<Separator Background="{DynamicResource {x:Static adonisUI:Brushes.Layer1HighlightBorderBrush}}" />
 			<TextBlock
@@ -1066,7 +1040,7 @@
 						<TextBlock
 							Margin="2,0,2,0"
 							Background="Transparent"
-							Text="{Binding Index}" />
+							Text="" />
 					</DataTemplate>
 				</GridViewColumn.CellTemplate>
 			</GridViewColumn>

@@ -18,6 +18,17 @@
 	  "Type": "Adventure",
 	  "Targets": "Story",
 	  "Author": "Larian Studios",
+	  "Description": "The main story campaign dependency.",
+	  "Tags": "Campaign"
+	},
+	{
+	  "Name": "GustavDev",
+	  "UUID": "28ac9ce2-2aba-8cda-b3b5-6e922f71b6b8",
+	  "Folder": "GustavDev",
+	  "Version": 144115617576214574,
+	  "Type": "Adventure",
+	  "Targets": "Story",
+	  "Author": "Larian Studios",
 	  "Description": "The main story campaign.",
 	  "Tags": "Campaign"
 	},
@@ -60,6 +71,16 @@
 	  "Targets": "Story",
 	  "Author": "Larian Studios",
 	  "Description": ""
+	},
+	{
+	  "Name": "Game",
+	  "UUID": "Game",
+	  "Folder": "Game",
+	  "Version": 36028797018963968,
+	  "Type": "Add-on",
+	  "Targets": "Story",
+	  "Author": "Larian Studios",
+	  "Description": "Not an actual mod. This is the Public/Game folder."
 	},
 	{
 	  "Name": "DiceSet_01",
