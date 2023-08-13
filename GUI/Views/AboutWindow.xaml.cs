@@ -25,7 +25,7 @@ namespace DivinityModManager.Views
 
 		public AboutWindowViewModel()
 		{
-			Title = "About";
+			Title = Properties.Resources.About;
 		}
 	}
 

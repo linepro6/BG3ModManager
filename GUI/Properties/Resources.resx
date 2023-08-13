@@ -561,8 +561,8 @@
   <data name="Always Disable Telemetry" xml:space="preserve">
     <value>Always Disable Telemetry</value>
   </data>
-  <data name="If enabled, Larian's telemetry (data gathering for early access) for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active" xml:space="preserve">
-    <value>If enabled, Larian's telemetry (data gathering for early access) for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active</value>
+  <data name="If enabled, Larian's telemetry options for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active" xml:space="preserve">
+    <value>If enabled, Larian's telemetry options for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active</value>
   </data>
   <data name="Auto Add Missing Dependencies When Exporting" xml:space="preserve">
     <value>Auto Add Missing Dependencies When Exporting</value>
@@ -702,7 +702,31 @@
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="Enable DirectX 11 Mode" xml:space="preserve">
+    <value>Enable DirectX 11 Mode</value>
+  </data>
+  <data name="If enabled, when launching the game, bg3_dx11.exe is used instead" xml:space="preserve">
+    <value>If enabled, when launching the game, bg3_dx11.exe is used instead</value>
+  </data>
+  <data name="Overrides" xml:space="preserve">
+    <value>Overrides</value>
+  </data>
   <data name="OverrideWarning3" xml:space="preserve">
     <value>This mod can be rearranged in the load order, due to it also having files of its own. Note that disabling it will not disable the file overrides.</value>
+  </data>
+  <data name="Save and restore the window location when the application starts." xml:space="preserve">
+    <value>Save and restore the window location when the application starts.</value>
+  </data>
+  <data name="Save Window Location" xml:space="preserve">
+    <value>Save Window Location</value>
+  </data>
+  <data name="SetRootInstallationFolderWindowTitle" xml:space="preserve">
+    <value>Set the path to the Baldur's Gate 3 root installation folder</value>
+  </data>
+  <data name="Show Display Names for Mods" xml:space="preserve">
+    <value>Show Display Names for Mods</value>
+  </data>
+  <data name="Skip Launcher" xml:space="preserve">
+    <value>Pass the --skip-launcher args when launching the game</value>
   </data>
 </root>

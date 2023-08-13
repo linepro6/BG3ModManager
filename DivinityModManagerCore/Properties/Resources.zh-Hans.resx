@@ -133,31 +133,31 @@
     <value>编辑</value>
   </data>
   <data name="Focus Inactive Mods List" xml:space="preserve">
-    <value>聚焦 非活动Mod列表</value>
+    <value>聚焦非激活Mod列表</value>
   </data>
   <data name="Export Order to Text File..." xml:space="preserve">
-    <value>将订单导出到文本文件...</value>
+    <value>将顺序表导出到文本文件...</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>帮助</value>
   </data>
   <data name="Save Order As..." xml:space="preserve">
-    <value>将订单保存为...</value>
+    <value>将顺序表保存为...</value>
   </data>
   <data name="Toggle Focus Filter for Current List" xml:space="preserve">
-    <value>切换当前列表的焦点过滤器</value>
+    <value>切换当前列表的焦点筛选器</value>
   </data>
   <data name="File" xml:space="preserve">
     <value>文件</value>
   </data>
   <data name="Export Order to Game" xml:space="preserve">
-    <value>将订单导出到游戏</value>
+    <value>将顺序表导出到游戏</value>
   </data>
   <data name="Open Repository Page..." xml:space="preserve">
     <value>打开资源库页面...</value>
   </data>
   <data name="Export Order to Archive As..." xml:space="preserve">
-    <value>将订单导出为归档文件...</value>
+    <value>将顺序表导出为存档...</value>
   </data>
   <data name="Extract Selected Mods To..." xml:space="preserve">
     <value>提取选中的Mod到...</value>
@@ -166,28 +166,28 @@
     <value>导入Mod...</value>
   </data>
   <data name="Open Mods Folder" xml:space="preserve">
-    <value>打开 Mods 文件夹</value>
+    <value>打开Mods文件夹</value>
   </data>
   <data name="Import Order from File..." xml:space="preserve">
-    <value>从文件导入订单...</value>
+    <value>从文件导入顺序表...</value>
   </data>
   <data name="Tools" xml:space="preserve">
     <value>工具</value>
   </data>
   <data name="Load Order From Selected GM Campaign" xml:space="preserve">
-    <value>从选定的 GM 活动加载订单</value>
+    <value>从选定的 GM Campaign 加载顺序表</value>
   </data>
   <data name="Move to Bottom of Active List" xml:space="preserve">
-    <value>移至活动列表底部</value>
+    <value>移动到激活列表底部</value>
   </data>
   <data name="About" xml:space="preserve">
     <value>关于</value>
   </data>
   <data name="Add New Order" xml:space="preserve">
-    <value>添加新订单</value>
+    <value>添加新的顺序表</value>
   </data>
   <data name="Export Order to Archive (.zip)" xml:space="preserve">
-    <value>将订单导出到存档 (.zip)</value>
+    <value>将顺序表导出到存档 (.zip)</value>
   </data>
   <data name="Open Keyboard Shortcuts" xml:space="preserve">
     <value>打开键盘快捷键</value>
@@ -199,7 +199,7 @@
     <value>刷新Workshop更新</value>
   </data>
   <data name="Import Order from Archive..." xml:space="preserve">
-    <value>从存档导入订单...</value>
+    <value>从存档导入顺序表...</value>
   </data>
   <data name="View" xml:space="preserve">
     <value>查看</value>
@@ -214,13 +214,13 @@
     <value>将选定Mod移至对立列表</value>
   </data>
   <data name="Save Order" xml:space="preserve">
-    <value>保存订单</value>
+    <value>保存顺序表</value>
   </data>
   <data name="Import Order from Save..." xml:space="preserve">
-    <value>从保存的订单导入...</value>
+    <value>从保存排序中导入...</value>
   </data>
   <data name="Focus Active Mods List" xml:space="preserve">
-    <value>聚焦活动Mod列表</value>
+    <value>聚焦激活Mod列表</value>
   </data>
   <data name="Go" xml:space="preserve">
     <value>管理</value>
@@ -235,7 +235,7 @@
     <value>捐赠一杯咖啡...</value>
   </data>
   <data name="Speak Active Order" xml:space="preserve">
-    <value>主动发言顺序</value>
+    <value>Speak激活顺序表</value>
   </data>
   <data name="Show File Names for Mods" xml:space="preserve">
     <value>显示Mod的文件名</value>
@@ -253,7 +253,7 @@
     <value>检查更新</value>
   </data>
   <data name="Import Order from Save As New Order..." xml:space="preserve">
-    <value>从 &quot;另存为新订单 &quot;导入订单...</value>
+    <value>从“另存为新顺序表”中导入顺序表...</value>
   </data>
   <data name="Delete Selected Mods..." xml:space="preserve">
     <value>删除所选Mod...</value>
@@ -262,22 +262,22 @@
     <value>切换更新视图</value>
   </data>
   <data name="Move to Top of Active List" xml:space="preserve">
-    <value>移至活动列表顶部</value>
+    <value>移动到激活列表顶部</value>
   </data>
   <data name="ActionOnGameLaunchTooltip" xml:space="preserve">
     <value>通过Mod管理器启动游戏时，将执行以下操作</value>
   </data>
   <data name="ActiveMods" xml:space="preserve">
-    <value>活动Mod</value>
+    <value>激活Mod</value>
   </data>
   <data name="ActiveMods1" xml:space="preserve">
-    <value>活动Mod</value>
+    <value>激活Mod</value>
   </data>
   <data name="ActiveModsTooltip" xml:space="preserve">
-    <value>筛选活动Mod</value>
+    <value>筛选激活Mod</value>
   </data>
   <data name="AddNewOrderButtonTooltip" xml:space="preserve">
-    <value>添加新负载订单</value>
+    <value>添加新的加载顺序表</value>
   </data>
   <data name="Author" xml:space="preserve">
     <value>作者</value>
@@ -304,7 +304,7 @@
     <value>删除缓存</value>
   </data>
   <data name="Command" xml:space="preserve">
-    <value>指挥</value>
+    <value>命令</value>
   </data>
   <data name="Copy" xml:space="preserve">
     <value>复制</value>
@@ -313,7 +313,7 @@
     <value>将Mod路径复制到剪贴板</value>
   </data>
   <data name="CopyOrderToClipboardHeader" xml:space="preserve">
-    <value>将订单复制到剪贴板</value>
+    <value>将顺序表复制到剪贴板</value>
   </data>
   <data name="CopyPathToClipboardHeader" xml:space="preserve">
     <value>将路径复制到剪贴板</value>
@@ -346,16 +346,16 @@
     <value>导出</value>
   </data>
   <data name="ExportOrderAsListHeader" xml:space="preserve">
-    <value>将订单导出为列表...</value>
+    <value>将顺序表导出为列表...</value>
   </data>
   <data name="ExportOrderToArchiveAsTooltip" xml:space="preserve">
-    <value>将活动Mod导出为 Zip 文件...</value>
+    <value>将激活Mod导出为 Zip 文件...</value>
   </data>
   <data name="ExportOrderToArchiveTooltip" xml:space="preserve">
-    <value>将活动Mod导出为压缩包</value>
+    <value>将激活Mod导出为压缩包</value>
   </data>
   <data name="ExportToModSettingsButtonTooltip" xml:space="preserve">
-    <value>将订单导出到游戏</value>
+    <value>将顺序表导出到游戏</value>
   </data>
   <data name="FilesToDelete" xml:space="preserve">
     <value>要删除的文件</value>
@@ -367,7 +367,7 @@
     <value>游戏启动参数</value>
   </data>
   <data name="GameLaunchParamsClearHeader" xml:space="preserve">
-    <value>清晰</value>
+    <value>清除</value>
   </data>
   <data name="GameLaunchParamsClearTooltip" xml:space="preserve">
     <value>清除当前参数</value>
@@ -382,16 +382,16 @@
     <value>通过Mod管理器启动游戏时传递给游戏可执行文件的参数</value>
   </data>
   <data name="GameLaunchParamsUnknown" xml:space="preserve">
-    <value>目的不明。</value>
+    <value>用途未知。</value>
   </data>
   <data name="HomePage" xml:space="preserve">
     <value>主页：</value>
   </data>
   <data name="InactiveMods" xml:space="preserve">
-    <value>非活动Mod</value>
+    <value>非激活Mod</value>
   </data>
   <data name="InactiveModsTooltip" xml:space="preserve">
-    <value>筛选非活动Mod</value>
+    <value>筛选非激活Mod</value>
   </data>
   <data name="Keybinding" xml:space="preserve">
     <value>按键绑定</value>
@@ -406,7 +406,7 @@
     <value>自动将日志保存到 _Logs</value>
   </data>
   <data name="ModOrder" xml:space="preserve">
-    <value>Mod订单</value>
+    <value>Mod顺序表</value>
   </data>
   <data name="ModUpdates" xml:space="preserve">
     <value>Mod更新</value>
@@ -424,7 +424,7 @@
     <value>向开发者捐赠一杯咖啡 (LaughingLeader)</value>
   </data>
   <data name="OpenExportedModOrderFileHeader" xml:space="preserve">
-    <value>打开导出的Mod订单文件...</value>
+    <value>打开导出的Mod顺序表文件...</value>
   </data>
   <data name="OpenExtenderLogsFolderButtonTooltip" xml:space="preserve">
     <value>打开日志文件夹</value>
@@ -466,10 +466,10 @@
     <value>刷新Mod和Workshop更新</value>
   </data>
   <data name="RemoveFromLoadOrderCheckboxContent" xml:space="preserve">
-    <value>从负载顺序中移除</value>
+    <value>从加载顺序表中移除</value>
   </data>
   <data name="RemoveFromLoadOrderCheckboxTooltip" xml:space="preserve">
-    <value>从活动加载顺序中删除已删除的Mod。</value>
+    <value>从激活的加载顺序表中删除已删除的Mod。</value>
   </data>
   <data name="ReportAnIssue" xml:space="preserve">
     <value>报告问题</value>
@@ -490,10 +490,10 @@
     <value>将所有按键绑定重置为默认值</value>
   </data>
   <data name="SaveAsButtonTooltip" xml:space="preserve">
-    <value>将订单保存为...</value>
+    <value>将顺序表保存为...</value>
   </data>
   <data name="SaveButtonTooltip" xml:space="preserve">
-    <value>将加载命令保存到文件</value>
+    <value>将加载顺序表保存到文件</value>
   </data>
   <data name="SaveSettingsButton" xml:space="preserve">
     <value>保存</value>
@@ -538,7 +538,7 @@
     <value>数据文件夹的路径，用于加载编辑器Mod。</value>
   </data>
   <data name="Example: Baldur&apos;s Gate 3/Data" xml:space="preserve">
-    <value>举例说明：博德之门 3/数据</value>
+    <value>举例说明：Baldur&apos;s Gate 3/Data</value>
   </data>
   <data name="Game Executable Path" xml:space="preserve">
     <value>游戏执行路径</value>
@@ -547,10 +547,10 @@
     <value>bg3.exe 的路径</value>
   </data>
   <data name="Saved Load Orders Path" xml:space="preserve">
-    <value>保存的加载订单路径</value>
+    <value>保存的加载顺序表路径</value>
   </data>
   <data name="The folder containing mod load orders" xml:space="preserve">
-    <value>包含Mod加载命令的文件夹</value>
+    <value>包含Mod加载顺序表的文件夹</value>
   </data>
   <data name="Enable Story Log" xml:space="preserve">
     <value>启用故事日志</value>
@@ -561,14 +561,11 @@
   <data name="Always Disable Telemetry" xml:space="preserve">
     <value>始终禁用遥测</value>
   </data>
-  <data name="If enabled, Larian&apos;s telemetry (data gathering for early access) for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active" xml:space="preserve">
-    <value>如果启用，Larian对BG3的遥测（早期访问的数据收集）将始终被禁用，而与活动的Mod无关。如果Mod处于活动状态，遥测始终被禁用</value>
-  </data>
   <data name="Auto Add Missing Dependencies When Exporting" xml:space="preserve">
     <value>导出时自动添加缺失的依赖项</value>
   </data>
   <data name="Automatically add dependency mods above their dependents in the exported load order, if omitted from the active order" xml:space="preserve">
-    <value>在导出的加载顺序中，如果从活动顺序中省略，则自动将依赖Mod添加到其依赖的Mod上方</value>
+    <value>如果在激活顺序表中忽略，则在导出的加载顺序中自动将依赖Mod添加到其依赖项之上</value>
   </data>
   <data name="Enable Automatic Updates" xml:space="preserve">
     <value>启用自动更新</value>
@@ -580,7 +577,7 @@
     <value>禁用缺失Mod警告</value>
   </data>
   <data name="If a load order is missing mods, no warnings will be displayed" xml:space="preserve">
-    <value>如果加载命令中缺少Mod，则不会显示警告信息</value>
+    <value>如果加载顺序表中缺少Mod，则不会显示任何警告</value>
   </data>
   <data name="Shift Focus on Swap" xml:space="preserve">
     <value>将重点转向交换</value>
@@ -604,13 +601,13 @@
     <value>创建者</value>
   </data>
   <data name="ClassicMod" xml:space="preserve">
-    <value>经典</value>
+    <value>（经典版）</value>
   </data>
   <data name="ClearMissingModsButton" xml:space="preserve">
     <value>删除所有缺失</value>
   </data>
   <data name="ClearMissingModsButtonTooltip" xml:space="preserve">
-    <value>从加载顺序中移除所有丢失的Mod。</value>
+    <value>从加载顺序表中移除所有丢失的Mod。</value>
   </data>
   <data name="CopyToClipboardFolderNameHeader" xml:space="preserve">
     <value>将文件夹名称复制到剪贴板</value>
@@ -637,10 +634,10 @@
     <value>依赖性：</value>
   </data>
   <data name="GMCampaign" xml:space="preserve">
-    <value>通用汽车运动</value>
+    <value>GM Campaign</value>
   </data>
   <data name="IndexHelpText" xml:space="preserve">
-    <value>Mod顺序索引列</value>
+    <value>Mod顺序表索引列</value>
   </data>
   <data name="KeybindingsTabHeader" xml:space="preserve">
     <value>键盘快捷键</value>
@@ -652,10 +649,10 @@
     <value>最后更新日期</value>
   </data>
   <data name="Modes" xml:space="preserve">
-    <value>Modes</value>
+    <value>模式</value>
   </data>
   <data name="ModesHeader" xml:space="preserve">
-    <value>Modes标题</value>
+    <value>模式</value>
   </data>
   <data name="ModifiedDateHeader" xml:space="preserve">
     <value>修改日期</value>
@@ -701,5 +698,35 @@
   </data>
   <data name="Version" xml:space="preserve">
     <value>版本</value>
+  </data>
+  <data name="If enabled, Larian&apos;s telemetry options for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active" xml:space="preserve">
+    <value>如果启用，Larian 的 BG3 遥测选项将始终处于禁用状态，与激活的修改器无关。如果 MOD 处于活动状态，遥测功能始终处于禁用状态</value>
+  </data>
+  <data name="Overrides" xml:space="preserve">
+    <value>覆盖</value>
+  </data>
+  <data name="OverrideWarning3" xml:space="preserve">
+    <value>由于该模块也有自己的文件，因此可以重新安排加载顺序。请注意，禁用它不会禁用文件覆盖。</value>
+  </data>
+  <data name="SetRootInstallationFolderWindowTitle" xml:space="preserve">
+    <value>设置《博德之门 3》根安装文件夹的路径</value>
+  </data>
+  <data name="Show Display Names for Mods" xml:space="preserve">
+    <value>显示 Mod 原名</value>
+  </data>
+  <data name="Skip Launcher" xml:space="preserve">
+    <value>在启动游戏时传递 --skip-launcher args 参数</value>
+  </data>
+  <data name="Enable DirectX 11 Mode" xml:space="preserve">
+    <value>启用 DirectX 11 模式</value>
+  </data>
+  <data name="If enabled, when launching the game, bg3_dx11.exe is used instead" xml:space="preserve">
+    <value>如果启用，启动游戏时将使用 bg3_dx11.exe 代替</value>
+  </data>
+  <data name="Save and restore the window location when the application starts." xml:space="preserve">
+    <value>保存并在程序启动时恢复窗口位置。</value>
+  </data>
+  <data name="Save Window Location" xml:space="preserve">
+    <value>保存窗口位置</value>
   </data>
 </root>

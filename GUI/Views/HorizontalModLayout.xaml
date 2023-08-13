@@ -146,7 +146,7 @@
 					<TextBlock
 						HorizontalAlignment="Center"
 						FontSize="16"
-						Text="Overrides" />
+						Text="{x:Static loc:Resources.Overrides}" />
 					<c:ModListView
 						x:Name="ForceLoadedModsListView"
 						Grid.Row="1"

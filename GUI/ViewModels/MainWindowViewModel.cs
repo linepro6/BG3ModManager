@@ -835,11 +835,11 @@ namespace DivinityModManager.ViewModels
 				{
 					if (b)
 					{
-						menuItem.Header = "Show Display Names for Mods";
+						menuItem.Header = Properties.Resources.ResourceManager.GetString("Show Display Names for Mods");
 					}
 					else
 					{
-						menuItem.Header = "Show File Names for Mods";
+						menuItem.Header = Properties.Resources.ResourceManager.GetString("Show File Names for Mods");
 					}
 				}
 			}).DisposeWith(Settings.Disposables);
@@ -1128,7 +1128,7 @@ namespace DivinityModManager.ViewModels
 					var dialog = new Ookii.Dialogs.Wpf.VistaFolderBrowserDialog()
 					{
 						Multiselect = false,
-						Description = "Set the path to the Baldur's Gate 3 root installation folder",
+						Description = Properties.Resources.SetRootInstallationFolderWindowTitle,
 						UseDescriptionForTitle = true,
 						SelectedPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)
 					};

@@ -530,6 +530,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Enable DirectX 11 Mode 的本地化字符串。
+        /// </summary>
+        public static string Enable_DirectX_11_Mode {
+            get {
+                return ResourceManager.GetString("Enable DirectX 11 Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Enable Story Log 的本地化字符串。
         /// </summary>
         public static string Enable_Story_Log {
@@ -845,13 +854,21 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
-        ///   查找类似 If enabled, Larian&apos;s telemetry (data gathering for early access) for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active 的本地化字符串。
+        ///   查找类似 If enabled, Larian&apos;s telemetry options for BG3 will always be disabled, regardless of active mods. Telemetry is always disabled if mods are active 的本地化字符串。
         /// </summary>
-        public static string If_enabled__Larian_s_telemetry__data_gathering_for_early_access__for_BG3_will_always_be_disabled__regardless_of_active_mods__Telemetry_is_always_disabled_if_mods_are_active {
+        public static string If_enabled__Larian_s_telemetry_options_for_BG3_will_always_be_disabled__regardless_of_active_mods__Telemetry_is_always_disabled_if_mods_are_active {
             get {
-                return ResourceManager.GetString("If enabled, Larian\'s telemetry (data gathering for early access) for BG3 will alw" +
-                        "ays be disabled, regardless of active mods. Telemetry is always disabled if mods" +
-                        " are active", resourceCulture);
+                return ResourceManager.GetString("If enabled, Larian\'s telemetry options for BG3 will always be disabled, regardles" +
+                        "s of active mods. Telemetry is always disabled if mods are active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 If enabled, when launching the game, bg3_dx11.exe is used instead 的本地化字符串。
+        /// </summary>
+        public static string If_enabled__when_launching_the_game__bg3_dx11_exe_is_used_instead {
+            get {
+                return ResourceManager.GetString("If enabled, when launching the game, bg3_dx11.exe is used instead", resourceCulture);
             }
         }
         
@@ -1306,6 +1323,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Overrides 的本地化字符串。
+        /// </summary>
+        public static string Overrides {
+            get {
+                return ResourceManager.GetString("Overrides", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 This mod overrides base game files directly.					As long as this mod exists in the Mods folder,				these files will be overwritten, even if the mod is disabled. 的本地化字符串。
         /// </summary>
         public static string OverrideWarning {
@@ -1477,6 +1503,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Save and restore the window location when the application starts. 的本地化字符串。
+        /// </summary>
+        public static string Save_and_restore_the_window_location_when_the_application_starts_ {
+            get {
+                return ResourceManager.GetString("Save and restore the window location when the application starts.", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Save Order 的本地化字符串。
         /// </summary>
         public static string Save_Order {
@@ -1491,6 +1526,15 @@ namespace DivinityModManager.Properties {
         public static string Save_Order_As___ {
             get {
                 return ResourceManager.GetString("Save Order As...", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Save Window Location 的本地化字符串。
+        /// </summary>
+        public static string Save_Window_Location {
+            get {
+                return ResourceManager.GetString("Save Window Location", resourceCulture);
             }
         }
         
@@ -1549,6 +1593,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Set the path to the Baldur&apos;s Gate 3 root installation folder 的本地化字符串。
+        /// </summary>
+        public static string SetRootInstallationFolderWindowTitle {
+            get {
+                return ResourceManager.GetString("SetRootInstallationFolderWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Settings 的本地化字符串。
         /// </summary>
         public static string Settings {
@@ -1585,6 +1638,15 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Show Display Names for Mods 的本地化字符串。
+        /// </summary>
+        public static string Show_Display_Names_for_Mods {
+            get {
+                return ResourceManager.GetString("Show Display Names for Mods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Show File Names for Mods 的本地化字符串。
         /// </summary>
         public static string Show_File_Names_for_Mods {
@@ -1617,6 +1679,15 @@ namespace DivinityModManager.Properties {
         public static string Skip {
             get {
                 return ResourceManager.GetString("Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Pass the --skip-launcher args when launching the game 的本地化字符串。
+        /// </summary>
+        public static string Skip_Launcher {
+            get {
+                return ResourceManager.GetString("Skip Launcher", resourceCulture);
             }
         }
         
