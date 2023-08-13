@@ -290,7 +290,6 @@ namespace DivinityModManager.ViewModels
 		private readonly IObservable<bool> canOpenDialogWindow;
 		private IObservable<bool> canOpenLogDirectory;
 
-		private bool OpenRepoLinkToDownload { get; set; }
 		public ICommand ToggleUpdatesViewCommand { get; private set; }
 		public ICommand CheckForAppUpdatesCommand { get; set; }
 		public ICommand CancelMainProgressCommand { get; set; }
@@ -568,7 +567,7 @@ namespace DivinityModManager.ViewModels
 			canOpenGameExe = this.WhenAnyValue(x => x.Settings.GameExecutablePath, p => !String.IsNullOrEmpty(p) && File.Exists(p)).StartWith(false);
 			canOpenLogDirectory = this.WhenAnyValue(x => x.Settings.ExtenderLogDirectory, (f) => Directory.Exists(f)).StartWith(false);
 
-			Keys.DownloadScriptExtender.AddAction(() => InstallScriptExtender_Start());
+			//Keys.DownloadScriptExtender.AddAction(() => InstallScriptExtender_Start());
 
 			var canOpenModsFolder = this.WhenAnyValue(x => x.PathwayData.DocumentsModsPath, (p) => !String.IsNullOrEmpty(p) && Directory.Exists(p));
 			Keys.OpenModsFolder.AddAction(() =>
@@ -1170,17 +1169,12 @@ namespace DivinityModManager.ViewModels
 		private void SetLoadedMods(IEnumerable<DivinityModData> loadedMods)
 		{
 			mods.Clear();
-			foreach (var m in DivinityApp.IgnoredMods)
-			{
-				mods.AddOrUpdate(m);
-				DivinityApp.Log($"Added ignored mod: Name({m.Name}) UUID({m.UUID}) Type({m.ModType}) Version({m.Version.VersionInt})");
-			}
 			foreach (var m in loadedMods)
 			{
 				if (m.IsLarianMod)
 				{
 					var existingIgnoredMod = DivinityApp.IgnoredMods.FirstOrDefault(x => x.UUID == m.UUID);
-					if (existingIgnoredMod != null)
+					if (existingIgnoredMod != null && existingIgnoredMod != m)
 					{
 						DivinityApp.IgnoredMods.Remove(existingIgnoredMod);
 					}
@@ -1277,7 +1271,6 @@ namespace DivinityModManager.ViewModels
 
 			if (GameDirectoryFound)
 			{
-				GameDirectoryFound = true;
 				string modsDirectory = Path.Combine(Settings.GameDataPath, "Mods");
 				if (Directory.Exists(modsDirectory))
 				{
@@ -1294,6 +1287,10 @@ namespace DivinityModManager.ViewModels
 				baseMods = await RunTask(DivinityModDataLoader.LoadBuiltinModsAsync(Settings.GameDataPath, cancelTokenSource.Token), null);
 				cancelTokenSource = GetCancellationToken(int.MaxValue);
 				await IncreaseMainProgressValueAsync(taskStepAmount);
+			}
+			else
+			{
+				baseMods = DivinityApp.IgnoredMods.ToList();
 			}
 
 			if (baseMods != null) MergeModLists(finalMods, baseMods);
@@ -1959,7 +1956,7 @@ namespace DivinityModManager.ViewModels
 		{
 			DivinityApp.Log($"Refreshing data asynchronously...");
 
-			double taskStepAmount = 1.0 / 11;
+			double taskStepAmount = 1.0 / 10;
 
 			List<DivinityLoadOrderEntry> lastActiveOrder = null;
 			string lastOrderName = "";
@@ -1999,9 +1996,9 @@ namespace DivinityModManager.ViewModels
 					await IncreaseMainProgressValueAsync(taskStepAmount);
 				}
 
-				await SetMainProgressTextAsync("Loading GM Campaigns...");
-				var loadedGMCampaigns = await LoadGameMasterCampaignsAsync(taskStepAmount);
-				await IncreaseMainProgressValueAsync(taskStepAmount);
+				//await SetMainProgressTextAsync("Loading GM Campaigns...");
+				//var loadedGMCampaigns = await LoadGameMasterCampaignsAsync(taskStepAmount);
+				//await IncreaseMainProgressValueAsync(taskStepAmount);
 
 				await SetMainProgressTextAsync("Loading external load orders...");
 				var savedModOrderList = await RunTask(LoadExternalLoadOrdersAsync(), new List<DivinityLoadOrder>());
@@ -2022,28 +2019,37 @@ namespace DivinityModManager.ViewModels
 				{
 					LoadAppConfig();
 					SetLoadedMods(loadedMods);
-					SetLoadedGMCampaigns(loadedGMCampaigns);
+					//SetLoadedGMCampaigns(loadedGMCampaigns);
 
 					Profiles.AddRange(loadedProfiles);
 
 					SavedModOrderList = savedModOrderList;
 
-					if (!String.IsNullOrWhiteSpace(selectedProfileUUID))
+					var index = Profiles.IndexOf(Profiles.FirstOrDefault(p => p.ProfileName == "Public"));
+					if (index > -1)
 					{
-						var index = Profiles.IndexOf(Profiles.FirstOrDefault(p => p.UUID == selectedProfileUUID));
-						if (index > -1)
+						SelectedProfileIndex = index;
+					}
+					else
+					{
+						if (!String.IsNullOrWhiteSpace(selectedProfileUUID))
 						{
-							SelectedProfileIndex = index;
+
+							index = Profiles.IndexOf(Profiles.FirstOrDefault(p => p.UUID == selectedProfileUUID));
+							if (index > -1)
+							{
+								SelectedProfileIndex = index;
+							}
+							else
+							{
+								SelectedProfileIndex = 0;
+								DivinityApp.Log($"Profile '{selectedProfileUUID}' not found {Profiles.Count}/{loadedProfiles.Count}.");
+							}
 						}
 						else
 						{
 							SelectedProfileIndex = 0;
-							DivinityApp.Log($"Profile '{selectedProfileUUID}' not found {Profiles.Count}/{loadedProfiles.Count}.");
 						}
-					}
-					else
-					{
-						SelectedProfileIndex = 0;
 					}
 
 					MainProgressWorkText = "Building mod order list...";
@@ -2494,7 +2500,7 @@ namespace DivinityModManager.ViewModels
 					{
 						await Observable.Start((Func<Unit>)(() =>
 						{
-							string msg = $"Problem exporting load order to '{outputPath}'";
+							string msg = $"Problem exporting load order to '{outputPath}'. Is the file locked?";
 							ShowAlert(msg, AlertType.Danger);
 							this.View.MainWindowMessageBox_OK.WindowBackground = new SolidColorBrush(Color.FromRgb(219, 40, 40));
 							this.View.MainWindowMessageBox_OK.Closed += this.MainWindowMessageBox_Closed_ResetColor;
@@ -2655,6 +2661,12 @@ namespace DivinityModManager.ViewModels
 
 		private void AddImportedMod(DivinityModData mod)
 		{
+			if(mod.IsForceLoaded && !mod.IsForceLoadedMergedMod)
+			{
+				mods.AddOrUpdate(mod);
+				DivinityApp.Log($"Imported Override Mod: {mod}");
+				return;
+			}
 			var existingMod = mods.Items.FirstOrDefault(x => x.UUID == mod.UUID);
 			if (existingMod != null)
 			{
@@ -3995,153 +4007,6 @@ namespace DivinityModManager.ViewModels
 			}
 		}
 
-		private void InstallScriptExtender_DownloadStart(string exeDir)
-		{
-			double taskStepAmount = 1.0 / 3;
-			MainProgressTitle = $"Setting up the Script Extender...";
-			MainProgressValue = 0d;
-			MainProgressToken = new CancellationTokenSource();
-			CanCancelProgress = true;
-			MainProgressIsActive = true;
-
-			string dllDestination = Path.Combine(exeDir, DivinityApp.EXTENDER_UPDATER_FILE);
-
-			RxApp.TaskpoolScheduler.ScheduleAsync((Func<IScheduler, CancellationToken, Task<IDisposable>>)(async (ctrl, t) =>
-			{
-				int successes = 0;
-				System.IO.Stream webStream = null;
-				System.IO.Stream unzippedEntryStream = null;
-				try
-				{
-					RxApp.MainThreadScheduler.Schedule(_ => MainProgressWorkText = $"Downloading {PathwayData.ScriptExtenderLatestReleaseUrl}...");
-					webStream = await WebHelper.DownloadFileAsStreamAsync(PathwayData.ScriptExtenderLatestReleaseUrl, MainProgressToken.Token);
-					if (webStream != null)
-					{
-						successes += 1;
-						IncreaseMainProgressValue(taskStepAmount);
-						RxApp.MainThreadScheduler.Schedule(_ => MainProgressWorkText = $"Extracting zip to {exeDir}...");
-						ZipArchive archive = new ZipArchive(webStream);
-						foreach (ZipArchiveEntry entry in archive.Entries)
-						{
-							if (MainProgressToken.IsCancellationRequested) break;
-							if (entry.Name.Equals(DivinityApp.EXTENDER_UPDATER_FILE, StringComparison.OrdinalIgnoreCase))
-							{
-								unzippedEntryStream = entry.Open(); // .Open will return a stream
-								using (var fs = File.Create(dllDestination, 4096, System.IO.FileOptions.Asynchronous))
-								{
-									await unzippedEntryStream.CopyToAsync(fs, 4096, MainProgressToken.Token);
-									successes += 1;
-								}
-								break;
-							}
-						}
-						IncreaseMainProgressValue(taskStepAmount);
-					}
-				}
-				catch (Exception ex)
-				{
-					DivinityApp.Log($"Error extracting package: {ex}");
-				}
-				finally
-				{
-					RxApp.MainThreadScheduler.Schedule(_ => MainProgressWorkText = $"Cleaning up...");
-					webStream?.Close();
-					unzippedEntryStream?.Close();
-					successes += 1;
-					IncreaseMainProgressValue(taskStepAmount);
-				}
-				await ctrl.Yield();
-				RxApp.MainThreadScheduler.Schedule(_ => OnMainProgressComplete());
-
-				RxApp.MainThreadScheduler.Schedule(() =>
-				{
-					if (successes >= 3)
-					{
-						this.View.AlertBar.SetSuccessAlert($"Successfully installed the Extender updater {DivinityApp.EXTENDER_UPDATER_FILE} to '{exeDir}'.", 20);
-						HighlightExtenderDownload = false;
-						Settings.ExtenderSettings.ExtenderUpdaterIsAvailable = true;
-						Settings.ExtenderSettings.ExtenderVersion = 56;
-						if (Settings.ExtenderSettings.ExtenderVersion <= -1)
-						{
-							if (!String.IsNullOrWhiteSpace(PathwayData.ScriptExtenderLatestReleaseVersion))
-							{
-								var re = new Regex("v([0-9]+)");
-								var m = re.Match(PathwayData.ScriptExtenderLatestReleaseVersion);
-								if (m.Success)
-								{
-									if (int.TryParse(m.Groups[1].Value, out int version))
-									{
-										Settings.ExtenderSettings.ExtenderVersion = version;
-										DivinityApp.Log($"Set extender version to v{version},");
-									}
-								}
-							}
-							else if (PathwayData.ScriptExtenderLatestReleaseUrl.Contains("v"))
-							{
-								var re = new Regex("v([0-9]+).*.zip");
-								var m = re.Match(PathwayData.ScriptExtenderLatestReleaseUrl);
-								if (m.Success)
-								{
-									if (int.TryParse(m.Groups[1].Value, out int version))
-									{
-										Settings.ExtenderSettings.ExtenderVersion = version;
-										DivinityApp.Log($"Set extender version to v{version},");
-									}
-								}
-							}
-						}
-						CheckExtenderData();
-					}
-					else
-					{
-						this.View.AlertBar.SetDangerAlert($"Error occurred when installing the Extender updater {DivinityApp.EXTENDER_UPDATER_FILE}. Check the log.", 30);
-					}
-				});
-
-				return Disposable.Empty;
-			}));
-		}
-
-		private void InstallScriptExtender_Start()
-		{
-			if (!OpenRepoLinkToDownload)
-			{
-				if (!String.IsNullOrWhiteSpace(Settings.GameExecutablePath) && File.Exists(Settings.GameExecutablePath))
-				{
-					string exeDir = Path.GetDirectoryName(Settings.GameExecutablePath);
-					string messageText = String.Format(@"Download and install the Script Extender (ositools)?
-The Script Extender is used by various mods to extend the scripting language of the game, allowing new functionality.
-The extenders needs to only be installed once, as it can auto-update itself automatically when you launch the game.
-Download url: 
-{0}
-Directory the zip will be extracted to:
-{1}", PathwayData.ScriptExtenderLatestReleaseUrl, exeDir);
-
-					var result = AdonisUI.Controls.MessageBox.Show(new AdonisUI.Controls.MessageBoxModel
-					{
-						Text = messageText,
-						Caption = "Download & Install the Script Extender?",
-						Buttons = AdonisUI.Controls.MessageBoxButtons.YesNo(),
-						Icon = AdonisUI.Controls.MessageBoxImage.Question
-					});
-
-					if (result == AdonisUI.Controls.MessageBoxResult.Yes)
-					{
-						InstallScriptExtender_DownloadStart(exeDir);
-					}
-				}
-				else
-				{
-					ShowAlert("The 'Game Executable Path' is not set or is not valid.", AlertType.Danger);
-				}
-			}
-			else
-			{
-				DivinityApp.Log($"Getting a release download link failed for some reason. Opening repo url: https://github.com/Norbyte/ositools/releases/latest");
-				Process.Start("https://github.com/Norbyte/ositools/releases/latest");
-			}
-		}
-
 		private int SortModOrder(DivinityLoadOrderEntry a, DivinityLoadOrderEntry b)
 		{
 			if (a != null && b != null)
@@ -4774,6 +4639,7 @@ Directory the zip will be extracted to:
 			var canCheckForUpdates = this.WhenAnyValue(x => x.MainProgressIsActive, b => b == false);
 			void checkForUpdatesAction()
 			{
+				ShowAlert("Checking for updates...", AlertType.Info, 90);
 				View.UserInvokedUpdate = true;
 				CheckForUpdates(true);
 			}

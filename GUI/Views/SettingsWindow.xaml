@@ -271,18 +271,20 @@
 								CommandParameter="{x:Null}"
 								Header="{x:Static loc:Resources.GameLaunchParams}"
 								ToolTip="{x:Static loc:Resources.GameLaunchParamsTooltip}">
+								<MenuItem Header="-continueGame" ToolTip="{x:Static loc:Resources.GameLaunchParamsContinueGame}" />
 								<MenuItem Header="-storylog 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsStoryLog}" />
 								<MenuItem Header="--logPath &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsLogPath}" />
-								<MenuItem Header="-asserts 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-stats 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-dynamicStory 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-externalcrashhandler" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-nametag &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="--cpuLimit &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-module &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="+connect_lobby &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-locaupdater 1" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
-								<MenuItem Header="-mediaPath &quot;&quot;" ToolTip="{x:Static loc:Resources.GameLaunchParamsUnknown}" />
+								<MenuItem Header="--cpuLimit x" ToolTip="{x:Static loc:Resources.GameLaunchParamsCpuLimit}" />
+								<MenuItem Header="-asserts 1" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-stats 1" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-dynamicStory 1" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-externalcrashhandler" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-nametag &quot;&quot;" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="--cpuLimit &quot;&quot;" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-module &quot;&quot;" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="+connect_lobby &quot;&quot;" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-locaupdater 1" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
+								<MenuItem Header="-mediaPath &quot;&quot;" Visibility="{Binding DebugModeEnabled, Converter={StaticResource BoolToVisibilityConverter}}" />
 								<MenuItem
 									Command="{Binding ClearLaunchParamsCommand}"
 									CommandParameter="{x:Null}"

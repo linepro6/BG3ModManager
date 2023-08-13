@@ -764,6 +764,24 @@ namespace DivinityModManager.Properties {
         }
         
         /// <summary>
+        ///   查找类似 Automatically load the last save when loading into the main menu 的本地化字符串。
+        /// </summary>
+        public static string GameLaunchParamsContinueGame {
+            get {
+                return ResourceManager.GetString("GameLaunchParamsContinueGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Limit the cpu to x amount of threads (unknown if this works) 的本地化字符串。
+        /// </summary>
+        public static string GameLaunchParamsCpuLimit {
+            get {
+                return ResourceManager.GetString("GameLaunchParamsCpuLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 A directory to write story logs to 的本地化字符串。
         /// </summary>
         public static string GameLaunchParamsLogPath {

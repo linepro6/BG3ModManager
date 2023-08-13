@@ -729,4 +729,10 @@
   <data name="Skip Launcher" xml:space="preserve">
     <value>Pass the --skip-launcher args when launching the game</value>
   </data>
+  <data name="GameLaunchParamsContinueGame" xml:space="preserve">
+    <value>Automatically load the last save when loading into the main menu</value>
+  </data>
+  <data name="GameLaunchParamsCpuLimit" xml:space="preserve">
+    <value>Limit the cpu to x amount of threads (unknown if this works)</value>
+  </data>
 </root>

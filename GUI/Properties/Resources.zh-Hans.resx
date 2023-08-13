@@ -729,4 +729,10 @@
   <data name="Save Window Location" xml:space="preserve">
     <value>保存窗口位置</value>
   </data>
+  <data name="GameLaunchParamsContinueGame" xml:space="preserve">
+    <value>载入主菜单时自动载入上次保存的内容</value>
+  </data>
+  <data name="GameLaunchParamsCpuLimit" xml:space="preserve">
+    <value>限制 CPU 的线程数量（未知是否有效）</value>
+  </data>
 </root>
